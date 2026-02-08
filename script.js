@@ -1,5 +1,5 @@
-// ===== FormSubmit.co — emails go to mo.adeysey@gmail.com =====
-const FORM_EMAIL = 'mo.adeysey@gmail.com';
+// ===== FormSubmit.co — emails go to kundeservice@veikraft.com =====
+const FORM_EMAIL = 'kundeservice@veikraft.com';
 const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${FORM_EMAIL}`;
 
 // ===== Smooth scroll =====
