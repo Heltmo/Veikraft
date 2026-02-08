@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>For courier-partnere & sjåfører | veikraft</title>
+  <meta name="description" content="Få B2B-oppdrag uten å bruke tid på salg. Registrer deg som courier-partner eller sjåfør hos veikraft.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">veikraft<span class="brand-dot">.</span></a>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html">Hjem</a>
+        <a href="index.html#bedrifter">For bedrifter</a>
+        <a href="#courier-info">For courier</a>
+        <a href="#register">Registrer deg</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="padding:56px 0 72px;">
+      <div class="hero-bg"></div>
+      <div class="container hero-center fade-up">
+        <span class="badge">For courier & sjåfører</span>
+        <h1>Vi sender deg ruter og oppdrag<br>— du leverer.</h1>
+        <p class="hero-sub">Bli del av veikraft-nettverket. Vi gir deg tilgang til betalte B2B-oppdrag med tydelig rute, tidsvindu og krav.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a class="btn btn-primary btn-lg" href="#register">Bli courier-partner</a>
+          <a class="btn btn-outline btn-lg" href="#register-driver">Registrer sjåfør</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cred-strip">
+      <div class="container cred-inner">
+        <div class="cred-item"><span class="cred-icon">&#10003;</span> B2B-oppdrag</div>
+        <div class="cred-item"><span class="cred-icon">&#10003;</span> Tydelige krav</div>
+        <div class="cred-item"><span class="cred-icon">&#10003;</span> Ingen salg nødvendig</div>
+        <div class="cred-item"><span class="cred-icon">&#10003;</span> Aksepter/avslå fritt</div>
+      </div>
+    </section>
+
+    <section id="courier-info" class="container section fade-up">
+      <div class="section-header">
+        <span class="section-tag">Hvorfor veikraft</span>
+        <h2>Stabile kontrakter fra bedrifter som trenger kapasitet</h2>
+        <p class="section-desc">Du velger kapasitet og tilgjengelighet — vi håndterer kundedialog og pipeline.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">&#128200;</div>
+          <h3>Mer volum</h3>
+          <p>Tilgang til B2B-kunder og gjentakende ruter uten at du bruker tid på salg.</p>
+          <span class="service-tag">Vekst</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#128203;</div>
+          <h3>Tydelige oppdrag</h3>
+          <p>Rute, tidsvindu, krav og POD er definert fra start. Ingen overraskelser.</p>
+          <span class="service-tag">Klarhet</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#9889;</div>
+          <h3>Rask matching</h3>
+          <p>Du mottar forespørsler og kan akseptere eller avslå — full kontroll.</p>
+          <span class="service-tag">Fleksibilitet</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container fade-up">
+        <div class="section-header">
+          <span class="section-tag">Prosessen</span>
+          <h2>Slik fungerer det</h2>
+        </div>
+        <div class="steps">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h3>Registrer kapasitet</h3>
+            <p>Oppgi område, kjøretøy, tilgjengelighet og type oppdrag du ønsker.</p>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h3>Motta forespørsler</h3>
+            <p>Du mottar relevante oppdrag med tydelig rute, tidsvindu og krav.</p>
+          </div>
+          <div class="step-connector"></div>
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h3>Lever & få betalt</h3>
+            <p>Utfør oppdrag, registrer POD, og motta betaling etter avtale.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="register" class="section section-dark fade-up">
+      <div class="container" style="max-width:620px;">
+        <div class="section-header">
+          <h2 style="color:#fff;">Bli courier-partner</h2>
+          <p class="section-desc">Fyll ut skjemaet så tar vi kontakt for verifisering.</p>
+        </div>
+        <form id="courierForm" class="modal-form" novalidate>
+          <div class="form-row">
+            <div class="form-group"><input name="company" type="text" placeholder=" " required><label>Firmanavn</label></div>
+            <div class="form-group"><input name="contact" type="text" placeholder=" " required><label>Kontaktperson</label></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><input name="email" type="email" placeholder=" " required><label>E-post</label></div>
+            <div class="form-group"><input name="phone" type="tel" placeholder=" " required><label>Telefon</label></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><input name="area" type="text" placeholder=" " required><label>Område / by</label></div>
+            <div class="form-group"><input name="capacity" type="text" placeholder=" " required><label>Kjøretøy / kapasitet</label></div>
+          </div>
+          <div class="form-group"><textarea name="notes" rows="3" placeholder=" "></textarea><label>Annet (valgfri)</label></div>
+          <button type="submit" class="btn btn-primary btn-full btn-lg">Send registrering</button>
+          <div id="courierMsg" class="form-message" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section id="register-driver" class="container section fade-up">
+      <div style="max-width:620px;margin:0 auto;">
+        <div class="section-header">
+          <h2>Registrer sjåfør</h2>
+          <p class="section-desc">Oppgi dine detaljer så får du tilgang til relevante oppdrag.</p>
+        </div>
+        <form id="driverForm" class="modal-form" novalidate>
+          <div class="form-row">
+            <div class="form-group"><input name="name" type="text" placeholder=" " required><label>Fullt navn</label></div>
+            <div class="form-group"><input name="phone" type="tel" placeholder=" " required><label>Telefon</label></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><input name="email" type="email" placeholder=" " required><label>E-post</label></div>
+            <div class="form-group"><input name="area" type="text" placeholder=" " required><label>Område / by</label></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><input name="vehicle" type="text" placeholder=" " required><label>Kjøretøytype</label></div>
+            <div class="form-group">
+              <select name="availability" required>
+                <option value="" disabled selected></option>
+                <option value="Fulltid">Fulltid</option>
+                <option value="Deltid">Deltid</option>
+                <option value="On-call">On-call / ved behov</option>
+              </select>
+              <label>Tilgjengelighet</label>
+            </div>
+          </div>
+          <div class="form-group"><textarea name="notes" rows="3" placeholder=" "></textarea><label>Annet (valgfri)</label></div>
+          <button type="submit" class="btn btn-primary btn-full btn-lg">Registrer sjåfør</button>
+          <div id="driverMsg" class="form-message" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <p class="micro-copy" style="text-align:center;padding:0 24px 48px;">Kun seriøse aktører. Vi verifiserer kapasitet og kvalitet før første oppdrag.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <div class="footer-brand">veikraft<span class="brand-dot">.</span></div>
+          <p class="footer-tagline">Sjåfører på veien — når det teller.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Plattform</h4>
+          <a href="index.html#bedrifter">For bedrifter</a>
+          <a href="#courier-info">For courier & sjåfører</a>
+          <a href="index.html#how">Slik fungerer det</a>
+        </div>
+        <div class="footer-col">
+          <h4>Selskap</h4>
+          <a href="privacy.html">Personvernerklæring</a>
+          <a href="terms.html">Vilkår & betingelser</a>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <a href="mailto:mo.adeysey@gmail.com">mo.adeysey@gmail.com</a>
+          <p class="muted" style="color:#64748b;">Man – Fre, 08:00 – 17:00</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 veikraft. Alle rettigheter reservert.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy.html">Personvern</a>
+          <a href="terms.html">Vilkår</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FormSubmit
+    const FORMSUBMIT_URL = 'https://formsubmit.co/ajax/mo.adeysey@gmail.com';
+
+    function validateEmail(e){ return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e); }
+    function showMsg(el,msg,ok=true){ el.textContent=msg; el.style.color=ok?'#16a34a':'#dc2626'; }
+
+    async function handleForm(form, msgEl, subject) {
+      const fd = new FormData(form);
+      const data = {};
+      fd.forEach((v,k) => { data[k] = v; });
+      data._subject = subject;
+      if (data.email && !validateEmail(data.email)) { showMsg(msgEl,'Ugyldig e-postadresse.',false); return; }
+      const btn = form.querySelector('button[type="submit"]');
+      const orig = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Sender...';
+      try {
+        const res = await fetch(FORMSUBMIT_URL, { method:'POST', headers:{'Content-Type':'application/json',Accept:'application/json'}, body:JSON.stringify(data) });
+        if (res.ok) { showMsg(msgEl,'Takk! Vi tar kontakt snart.',true); form.reset(); }
+        else { showMsg(msgEl,'Noe gikk galt. Prøv igjen.',false); }
+      } catch { showMsg(msgEl,'Kunne ikke sende. Sjekk tilkoblingen.',false); }
+      finally { btn.disabled = false; btn.textContent = orig; }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const cf = document.getElementById('courierForm');
+      const df = document.getElementById('driverForm');
+      if (cf) cf.addEventListener('submit', (e) => { e.preventDefault(); handleForm(cf, document.getElementById('courierMsg'), 'veikraft — Courier-registrering'); });
+      if (df) df.addEventListener('submit', (e) => { e.preventDefault(); handleForm(df, document.getElementById('driverMsg'), 'veikraft — Sjåfør-registrering'); });
+
+      // Scroll animations
+      const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }); }, {threshold:.1});
+      document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+      // Hamburger
+      const h = document.getElementById('hamburger'), n = document.getElementById('mainNav');
+      if(h&&n){ h.addEventListener('click',()=>{ const ex=h.getAttribute('aria-expanded')==='true'; h.setAttribute('aria-expanded',String(!ex)); n.classList.toggle('open'); }); }
+
+      // Smooth scroll
+      document.addEventListener('click',(e)=>{ const a=e.target.closest('a[href^="#"]'); if(!a)return; const hash=a.getAttribute('href'); if(hash.startsWith('#')){e.preventDefault();const el=document.querySelector(hash);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});} });
+
+      // Dark form styling
+      document.querySelectorAll('.section-dark .form-group input, .section-dark .form-group select, .section-dark .form-group textarea').forEach(el => {
+        el.style.background = '#1e293b';
+        el.style.borderColor = '#334155';
+        el.style.color = '#f1f5f9';
+      });
+      document.querySelectorAll('.section-dark .form-group label').forEach(el => {
+        el.style.color = '#64748b';
+      });
+    });
+  </script>
+</body>
+</html>
