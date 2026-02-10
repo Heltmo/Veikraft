@@ -159,6 +159,60 @@ function initTabs() {
   });
 }
 
+// ===== Hero Selector =====
+function initHeroSelector() {
+  const trigger = document.getElementById('mainSelector');
+  const dropdown = document.getElementById('selectorDropdown');
+  const driverOption = document.getElementById('driverOption');
+  const driverSubmenu = document.getElementById('driverSubmenu');
+
+  if (!trigger || !dropdown) return;
+
+  // Toggle main dropdown
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    trigger.classList.toggle('active');
+    dropdown.classList.toggle('active');
+  });
+
+  // Toggle driver submenu
+  if (driverOption && driverSubmenu) {
+    driverOption.addEventListener('click', (e) => {
+      e.stopPropagation();
+      driverOption.classList.toggle('active');
+      driverSubmenu.classList.toggle('active');
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!trigger.contains(e.target) && !dropdown.contains(e.target)) {
+      trigger.classList.remove('active');
+      dropdown.classList.remove('active');
+      if (driverOption) driverOption.classList.remove('active');
+      if (driverSubmenu) driverSubmenu.classList.remove('active');
+    }
+  });
+
+  // Handle option clicks - open modal
+  dropdown.querySelectorAll('.selector-option[data-modal]').forEach((option) => {
+    option.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modalId = option.dataset.modal;
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      // Close dropdown
+      trigger.classList.remove('active');
+      dropdown.classList.remove('active');
+      if (driverOption) driverOption.classList.remove('active');
+      if (driverSubmenu) driverSubmenu.classList.remove('active');
+    });
+  });
+}
+
 // ===== Hamburger =====
 function initHamburger() {
   const hamburger = document.getElementById('hamburger');
@@ -186,4 +240,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initModalForms();
   initTabs();
   initHamburger();
+  initHeroSelector();
 });

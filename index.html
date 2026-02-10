@@ -39,9 +39,43 @@
         <span class="badge">veikraft</span>
         <h1>Budkapasitet når du trenger det.<br>Oppdrag når du vil ha det.</h1>
         <p class="hero-sub">veikraft kobler bedrifter med pålitelige sjåfører. Få budkapasitet på kort varsel — eller flere B2B-oppdrag uten salgsarbeid.</p>
-        <div class="hero-buttons">
-          <a class="btn btn-primary btn-lg" href="#bedrifter">For bedrifter</a>
-          <a class="btn btn-dark btn-lg" href="#courier">For sjåfører</a>
+        <div class="hero-selector">
+          <button class="btn btn-primary btn-lg selector-trigger" id="mainSelector">
+            Kom i gang <span class="selector-arrow">&#9662;</span>
+          </button>
+          <div class="selector-dropdown" id="selectorDropdown">
+            <a href="#bedrifter" class="selector-option" data-modal="bedriftModal">
+              <span class="selector-icon">&#127970;</span>
+              <div>
+                <strong>For bedrifter</strong>
+                <span>Trenger budkapasitet</span>
+              </div>
+            </a>
+            <div class="selector-option has-submenu" id="driverOption">
+              <span class="selector-icon">&#128666;</span>
+              <div>
+                <strong>For sjåfører</strong>
+                <span>Få oppdrag</span>
+              </div>
+              <span class="submenu-arrow">&#9656;</span>
+            </div>
+            <div class="selector-submenu" id="driverSubmenu">
+              <a href="#courier" class="selector-option" data-modal="driverModal">
+                <span class="selector-icon">&#128100;</span>
+                <div>
+                  <strong>Søker jobb</strong>
+                  <span>Send CV og søknad</span>
+                </div>
+              </a>
+              <a href="#courier" class="selector-option" data-modal="courierModal">
+                <span class="selector-icon">&#127970;</span>
+                <div>
+                  <strong>Har foretak</strong>
+                  <span>Bli courier-partner</span>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
