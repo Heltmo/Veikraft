@@ -154,12 +154,12 @@ button { font-family: inherit; }
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xl);
   border: 1px solid var(--border);
-  min-width: 280px;
+  min-width: 300px;
   opacity: 0;
   visibility: hidden;
   transition: all var(--transition);
   z-index: 50;
-  overflow: hidden;
+  padding: 8px 0;
 }
 .selector-dropdown.active { opacity: 1; visibility: visible; transform: translateX(-50%) scale(1); }
 .selector-option {
@@ -171,9 +171,11 @@ button { font-family: inherit; }
   color: var(--text);
   transition: background var(--transition);
   cursor: pointer;
-  border-bottom: 1px solid var(--border);
 }
-.selector-option:last-child { border-bottom: none; }
+.selector-dropdown > .selector-option,
+.selector-dropdown > .selector-option.has-submenu { border-bottom: 1px solid var(--border); }
+.selector-dropdown > *:last-child,
+.selector-dropdown > .selector-submenu:last-child .selector-option:last-child { border-bottom: none; }
 .selector-option:hover { background: var(--bg-alt); }
 .selector-option strong { display: block; font-size: 15px; font-weight: 600; margin-bottom: 2px; }
 .selector-option span:not(.selector-icon):not(.submenu-arrow) { font-size: 13px; color: var(--text-light); }
@@ -185,9 +187,12 @@ button { font-family: inherit; }
   overflow: hidden;
   background: var(--bg-alt);
   transition: max-height .3s ease;
+  margin: 0 -8px;
+  padding: 0 8px;
 }
 .selector-submenu.active { max-height: 200px; }
-.selector-submenu .selector-option { padding-left: 36px; border-bottom-color: rgba(0,0,0,.05); }
+.selector-submenu .selector-option { padding-left: 36px; border-bottom: 1px solid rgba(0,0,0,.05); }
+.selector-submenu .selector-option:last-child { border-bottom: none; }
 .selector-submenu .selector-option:hover { background: var(--accent-light); }
 .badge { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: var(--radius-full); letter-spacing: .3px; animation: badge-glow 3s ease-in-out infinite; }
 @keyframes badge-glow {
