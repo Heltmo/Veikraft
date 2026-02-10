@@ -121,7 +121,7 @@ function initModalForms() {
       }
 
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Sender...';
+      submitBtn.classList.add('loading');
       showMessage(msgEl, '', true);
 
       try {
@@ -136,7 +136,7 @@ function initModalForms() {
         showMessage(msgEl, 'Kunne ikke sende. Sjekk internett-tilkoblingen.', false);
       } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
+        submitBtn.classList.remove('loading');
       }
     });
   });
