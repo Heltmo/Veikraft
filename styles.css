@@ -159,11 +159,11 @@ button { font-family: inherit; }
   visibility: hidden;
   transition: all var(--transition);
   z-index: 50;
-  padding: 8px 0;
+  overflow: visible;
 }
 .selector-dropdown.active { opacity: 1; visibility: visible; transform: translateX(-50%) scale(1); }
 .selector-option {
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: 14px;
   padding: 16px 20px;
@@ -171,11 +171,10 @@ button { font-family: inherit; }
   color: var(--text);
   transition: background var(--transition);
   cursor: pointer;
+  border-bottom: 1px solid var(--border);
 }
-.selector-dropdown > .selector-option,
-.selector-dropdown > .selector-option.has-submenu { border-bottom: 1px solid var(--border); }
-.selector-dropdown > *:last-child,
-.selector-dropdown > .selector-submenu:last-child .selector-option:last-child { border-bottom: none; }
+.selector-option:last-of-type { border-bottom: none; }
+.selector-option.has-submenu { border-bottom: 1px solid var(--border); }
 .selector-option:hover { background: var(--bg-alt); }
 .selector-option strong { display: block; font-size: 15px; font-weight: 600; margin-bottom: 2px; }
 .selector-option span:not(.selector-icon):not(.submenu-arrow) { font-size: 13px; color: var(--text-light); }
@@ -187,8 +186,6 @@ button { font-family: inherit; }
   overflow: hidden;
   background: var(--bg-alt);
   transition: max-height .3s ease;
-  margin: 0 -8px;
-  padding: 0 8px;
 }
 .selector-submenu.active { max-height: 200px; }
 .selector-submenu .selector-option { padding-left: 36px; border-bottom: 1px solid rgba(0,0,0,.05); }
