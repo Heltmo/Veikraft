@@ -111,7 +111,7 @@ function initModalForms() {
       const fd = new FormData(form);
       const data = {};
       fd.forEach((v, k) => { data[k] = v; });
-      data._subject = `veikraft — ${formType === 'bedrift' ? 'Bedrift-forespørsel' : formType === 'courier' ? 'Courier-registrering' : 'Sjåfør-registrering'}`;
+      data._subject = `veikraft — ${formType === 'bedrift' ? 'Bedrift-forespørsel' : formType === 'courier' ? 'Foretaksregistrering' : 'Sjåfør-registrering'}`;
       data.formType = formType;
 
       // Validate email if present
@@ -185,38 +185,38 @@ function initHeroModeSwitch() {
   const modes = {
     bedrift: {
       badge: 'For bedrift',
-      title: 'Vi finner din neste medarbeider',
-      sub: 'Trenger du ekstra kapasitet, innleie eller stotte i rekruttering? Vi matcher riktig personell raskt.',
-      primary: { text: 'Kontakt oss', modal: 'bedriftModal' },
-      secondary: { text: 'Se losninger', href: '#bedrifter' },
+      title: 'Bemanning til varetransport og distribusjon',
+      sub: 'Veikraft hjelper bedrifter med sjåfører og transportkapasitet for faste ruter, sesongtopper og ekspresslevering.',
+      primary: { text: 'Få bemanningstilbud', modal: 'bedriftModal' },
+      secondary: { text: 'Se løsninger', href: '#bedrifter' },
       context: {
-        title: 'Vi finner din neste medarbeider',
-        lead: 'Trenger du en midlertidig ansatt eller onsker hjelp til rekruttering til fast stilling? Vi hjelper deg med begge deler.',
-        body: 'Vi dekker et bredt spekter av behov og matcher deg med riktig kapasitet, raskt og effektivt.',
+        title: 'Vi finner riktig transportkompetanse',
+        lead: 'Vi leverer bemanning til varetransport for nettbutikker, matkasser, blomsterlevering og pakkedistribusjon.',
+        body: 'Typiske oppdragsmiljøer er aktører som HelloFresh, Oda, Interflora, Bring, Posten og lignende logistikkmiljøer.',
       },
       links: [
-        { label: 'Innleie av arbeidskraft', href: '#bedrifter' },
-        { label: 'Var rekrutteringsprosess', href: '#how' },
+        { label: 'Innleie til varetransport', href: '#bedrifter' },
+        { label: 'Slik bemanner vi ruter', href: '#how' },
         { label: 'Kontakt oss', href: '#contact' },
-        { label: 'Finn ditt lokalomrade', href: '#contact' },
+        { label: 'Dekningsområder', href: '#contact' },
       ],
     },
     jobbsoker: {
-      badge: 'For jobbsoker',
-      title: 'Finn jobb der du er best',
-      sub: 'Uansett om du vil ha oppdrag eller fast jobb, kobler vi deg med bedrifter som trenger din kompetanse.',
+      badge: 'For jobbsøker',
+      title: 'Få jobb innen varetransport',
+      sub: 'Vi hjelper deg inn i oppdrag hos transport- og logistikkmiljøer som trenger sjåfører nå.',
       primary: { text: 'Opprett profil', modal: 'driverModal' },
       secondary: { text: 'Se oppdrag', href: '#courier' },
       context: {
-        title: 'Jobb der DU er best',
-        lead: 'Vi vet at du er mer enn en CV. Nar du registrerer deg, matcher vi deg med relevante oppdrag og stillinger.',
-        body: 'Du far tydelige forventninger, rask oppfolging og mulighet til a velge oppdrag som passer din hverdag.',
+        title: 'Jobb med kjente transportoppdrag',
+        lead: 'Vi matcher deg med oppdrag innen distribusjon, bud og terminaldrift i ditt område.',
+        body: 'Du kan bli vurdert til oppdrag for miljøer som Bring, Posten, Oda, Interflora og lignende aktører.',
       },
       links: [
         { label: 'Finn ledige oppdrag', href: '#courier' },
-        { label: 'Opprett profil', href: '#courier' },
-        { label: 'Bli courier-partner', href: '#courier' },
-        { label: 'Finn ditt lokalomrade', href: '#contact' },
+        { label: 'Registrer sjåførprofil', href: '#courier' },
+        { label: 'Registrer transportforetak', href: '#courier' },
+        { label: 'Se områder vi dekker', href: '#contact' },
       ],
     },
   };
