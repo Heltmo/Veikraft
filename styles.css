@@ -248,7 +248,7 @@ button {
 }
 
 .header-inner {
-  height: 76px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -271,7 +271,7 @@ button {
 }
 
 .brand-logo {
-  height: 72px;
+  height: 88px;
   width: auto;
   object-fit: contain;
 }
