@@ -36,7 +36,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 108px;
+  scroll-padding-top: 94px;
 }
 
 body {
@@ -249,7 +249,7 @@ button {
 }
 
 .header-inner {
-  height: 102px;
+  height: 88px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -272,8 +272,8 @@ button {
 }
 
 .brand-logo {
-  height: 34px;
-  max-width: 190px;
+  height: 22px;
+  max-width: 176px;
   width: auto;
   object-fit: contain;
 }
@@ -294,7 +294,7 @@ button {
   line-height: 1.2;
   font-weight: 700;
   border-radius: var(--radius-pill);
-  padding: 8px 12px;
+  padding: 7px 11px;
 }
 
 .main-nav a:hover {
@@ -1597,7 +1597,7 @@ button {
   .main-nav {
     display: none;
     position: absolute;
-    top: 102px;
+    top: 88px;
     left: 0;
     right: 0;
     flex-direction: column;
