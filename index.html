@@ -33,74 +33,60 @@
   <main>
 
     <!-- HERO -->
-    <section class="hero" id="hero">
+    <section class="hero" id="hero" data-hero-mode="bedrift">
       <div class="hero-bg"></div>
-      <div class="container hero-wrap fade-up">
-        <div class="hero-center">
-          <span class="badge">veikraft for bedrifter og sjåfører</span>
-          <h1>Riktig kapasitet, raskt. Et nettverk bygget for B2B-logistikk.</h1>
-          <p class="hero-sub">Inspirert av et mer moderne rekrutterings- og bemanningsuttrykk: tydelig, direkte og handlingsdrevet. Få budkapasitet på kort varsel eller tilgang til nye oppdrag.</p>
-          <div class="hero-actions">
-            <div class="hero-selector">
-              <button class="btn btn-primary btn-lg selector-trigger" id="mainSelector">
-                Kom i gang <span class="selector-arrow">&#9662;</span>
-              </button>
-              <div class="selector-dropdown" id="selectorDropdown">
-                <a href="#bedrifter" class="selector-option" data-modal="bedriftModal">
-                  <span class="selector-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span>
-                  <div>
-                    <strong>For bedrifter</strong>
-                    <span>Trenger budkapasitet</span>
-                  </div>
-                </a>
-                <div class="selector-option has-submenu" id="driverOption">
-                  <span class="selector-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h.01"/><path d="M17 7h.01"/><path d="M7 17h.01"/><path d="M17 17h.01"/><path d="m8 12 4 4 4-4"/></svg></span>
-                  <div>
-                    <strong>For sjåfører</strong>
-                    <span>Få oppdrag</span>
-                  </div>
-                  <span class="submenu-arrow">&#9656;</span>
-                </div>
-                <div class="selector-submenu" id="driverSubmenu">
-                  <a href="#courier" class="selector-option" data-modal="driverModal">
-                    <span class="selector-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-                    <div>
-                      <strong>Søker jobb</strong>
-                      <span>Send CV og søknad</span>
-                    </div>
-                  </a>
-                  <a href="#courier" class="selector-option" data-modal="courierModal">
-                    <span class="selector-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
-                    <div>
-                      <strong>Har foretak</strong>
-                      <span>Bli courier-partner</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <a class="btn btn-outline btn-lg" href="#services">Se tjenester</a>
-          </div>
+      <div class="container hero-center fade-up">
+        <span class="badge" id="heroBadge">For bedrift</span>
+        <h1 id="heroTitle">Vi finner din neste medarbeider</h1>
+        <p class="hero-sub" id="heroSub">Trenger du ekstra kapasitet, innleie eller støtte i rekruttering? Vi matcher riktig personell raskt.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-lg" id="heroPrimaryBtn" data-modal="bedriftModal">Kontakt oss</button>
+          <a class="btn btn-outline btn-lg" id="heroSecondaryBtn" href="#bedrifter">Se løsninger</a>
         </div>
-        <aside class="hero-panel" aria-label="Nøkkeltall og målgrupper">
-          <div class="hero-panel-card">
-            <p class="panel-kicker">For bedrifter</p>
-            <h3>Ekstra kapasitet ved topper</h3>
-            <p>Same-day, faste ruter og backup med én kontaktperson.</p>
-            <button class="btn btn-dark btn-sm" data-modal="bedriftModal">Få tilbud</button>
-          </div>
-          <div class="hero-panel-card">
-            <p class="panel-kicker">For sjåfører</p>
-            <h3>Flere B2B-oppdrag</h3>
-            <p>Motta relevante forespørsler med tydelig rute og krav.</p>
-            <button class="btn btn-outline btn-sm" data-modal="courierModal">Registrer deg</button>
-          </div>
-          <div class="hero-metrics">
-            <div><strong>10+</strong><span>bransjer</span></div>
-            <div><strong>B2B</strong><span>fokusert</span></div>
-            <div><strong>POD</strong><span>på alle oppdrag</span></div>
-          </div>
-        </aside>
+      </div>
+      <div class="hero-mode-tabs" role="tablist" aria-label="Velg målgruppe">
+        <button class="hero-mode-tab" data-hero-mode-tab="jobbsoker" role="tab" aria-selected="false">Jobbsøker</button>
+        <button class="hero-mode-tab active" data-hero-mode-tab="bedrift" role="tab" aria-selected="true">Bedrift</button>
+      </div>
+    </section>
+
+    <section class="hero-context">
+      <div class="container hero-context-grid fade-up">
+        <article class="hero-context-card">
+          <h2 id="heroContextTitle">Vi finner din neste medarbeider</h2>
+          <p id="heroContextLead">Trenger du en midlertidig ansatt eller ønsker hjelp til rekruttering til fast stilling? Vi hjelper deg med begge deler.</p>
+          <p id="heroContextBody">Vi dekker et bredt spekter av behov og matcher deg med riktig kapasitet, raskt og effektivt.</p>
+        </article>
+        <div class="hero-context-links" id="heroContextLinks">
+          <a class="hero-context-link" id="heroLink1" href="#bedrifter">
+            <span class="hero-link-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            </span>
+            <span class="hero-link-label" id="heroLinkLabel1">Innleie av arbeidskraft</span>
+            <span class="hero-link-arrow">&#8250;</span>
+          </a>
+          <a class="hero-context-link" id="heroLink2" href="#how">
+            <span class="hero-link-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M12 4h9"/><path d="M4 9h16"/><path d="M4 15h16"/><path d="m6 4 2 2-2 2"/><path d="m6 14 2 2-2 2"/></svg>
+            </span>
+            <span class="hero-link-label" id="heroLinkLabel2">Vår rekrutteringsprosess</span>
+            <span class="hero-link-arrow">&#8250;</span>
+          </a>
+          <a class="hero-context-link" id="heroLink3" href="#contact">
+            <span class="hero-link-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </span>
+            <span class="hero-link-label" id="heroLinkLabel3">Kontakt oss</span>
+            <span class="hero-link-arrow">&#8250;</span>
+          </a>
+          <a class="hero-context-link" id="heroLink4" href="#contact">
+            <span class="hero-link-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 10-8 10s-8-4-8-10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span class="hero-link-label" id="heroLinkLabel4">Finn ditt lokalområde</span>
+            <span class="hero-link-arrow">&#8250;</span>
+          </a>
+        </div>
       </div>
     </section>
 

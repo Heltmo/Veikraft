@@ -159,6 +159,113 @@ function initTabs() {
   });
 }
 
+// ===== Hero mode switch (Jobbsoker / Bedrift) =====
+function initHeroModeSwitch() {
+  const hero = document.getElementById('hero');
+  const modeTabs = document.querySelectorAll('[data-hero-mode-tab]');
+  if (!hero || !modeTabs.length) return;
+
+  const ui = {
+    badge: document.getElementById('heroBadge'),
+    title: document.getElementById('heroTitle'),
+    sub: document.getElementById('heroSub'),
+    primaryBtn: document.getElementById('heroPrimaryBtn'),
+    secondaryBtn: document.getElementById('heroSecondaryBtn'),
+    contextTitle: document.getElementById('heroContextTitle'),
+    contextLead: document.getElementById('heroContextLead'),
+    contextBody: document.getElementById('heroContextBody'),
+    links: [
+      { anchor: document.getElementById('heroLink1'), label: document.getElementById('heroLinkLabel1') },
+      { anchor: document.getElementById('heroLink2'), label: document.getElementById('heroLinkLabel2') },
+      { anchor: document.getElementById('heroLink3'), label: document.getElementById('heroLinkLabel3') },
+      { anchor: document.getElementById('heroLink4'), label: document.getElementById('heroLinkLabel4') },
+    ],
+  };
+
+  const modes = {
+    bedrift: {
+      badge: 'For bedrift',
+      title: 'Vi finner din neste medarbeider',
+      sub: 'Trenger du ekstra kapasitet, innleie eller stotte i rekruttering? Vi matcher riktig personell raskt.',
+      primary: { text: 'Kontakt oss', modal: 'bedriftModal' },
+      secondary: { text: 'Se losninger', href: '#bedrifter' },
+      context: {
+        title: 'Vi finner din neste medarbeider',
+        lead: 'Trenger du en midlertidig ansatt eller onsker hjelp til rekruttering til fast stilling? Vi hjelper deg med begge deler.',
+        body: 'Vi dekker et bredt spekter av behov og matcher deg med riktig kapasitet, raskt og effektivt.',
+      },
+      links: [
+        { label: 'Innleie av arbeidskraft', href: '#bedrifter' },
+        { label: 'Var rekrutteringsprosess', href: '#how' },
+        { label: 'Kontakt oss', href: '#contact' },
+        { label: 'Finn ditt lokalomrade', href: '#contact' },
+      ],
+    },
+    jobbsoker: {
+      badge: 'For jobbsoker',
+      title: 'Finn jobb der du er best',
+      sub: 'Uansett om du vil ha oppdrag eller fast jobb, kobler vi deg med bedrifter som trenger din kompetanse.',
+      primary: { text: 'Opprett profil', modal: 'driverModal' },
+      secondary: { text: 'Se oppdrag', href: '#courier' },
+      context: {
+        title: 'Jobb der DU er best',
+        lead: 'Vi vet at du er mer enn en CV. Nar du registrerer deg, matcher vi deg med relevante oppdrag og stillinger.',
+        body: 'Du far tydelige forventninger, rask oppfolging og mulighet til a velge oppdrag som passer din hverdag.',
+      },
+      links: [
+        { label: 'Finn ledige oppdrag', href: '#courier' },
+        { label: 'Opprett profil', href: '#courier' },
+        { label: 'Bli courier-partner', href: '#courier' },
+        { label: 'Finn ditt lokalomrade', href: '#contact' },
+      ],
+    },
+  };
+
+  function applyMode(modeKey) {
+    const mode = modes[modeKey] || modes.bedrift;
+    hero.dataset.heroMode = modeKey;
+
+    if (ui.badge) ui.badge.textContent = mode.badge;
+    if (ui.title) ui.title.textContent = mode.title;
+    if (ui.sub) ui.sub.textContent = mode.sub;
+
+    if (ui.primaryBtn) {
+      ui.primaryBtn.textContent = mode.primary.text;
+      ui.primaryBtn.dataset.modal = mode.primary.modal;
+    }
+
+    if (ui.secondaryBtn) {
+      ui.secondaryBtn.textContent = mode.secondary.text;
+      ui.secondaryBtn.setAttribute('href', mode.secondary.href);
+    }
+
+    if (ui.contextTitle) ui.contextTitle.textContent = mode.context.title;
+    if (ui.contextLead) ui.contextLead.textContent = mode.context.lead;
+    if (ui.contextBody) ui.contextBody.textContent = mode.context.body;
+
+    ui.links.forEach((link, index) => {
+      const data = mode.links[index];
+      if (!data) return;
+      if (link.label) link.label.textContent = data.label;
+      if (link.anchor) link.anchor.setAttribute('href', data.href);
+    });
+
+    modeTabs.forEach((tab) => {
+      const active = tab.dataset.heroModeTab === modeKey;
+      tab.classList.toggle('active', active);
+      tab.setAttribute('aria-selected', String(active));
+    });
+  }
+
+  modeTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      applyMode(tab.dataset.heroModeTab || 'bedrift');
+    });
+  });
+
+  applyMode(hero.dataset.heroMode || 'bedrift');
+}
+
 // ===== Hero Selector =====
 function initHeroSelector() {
   const trigger = document.getElementById('mainSelector');
@@ -236,6 +343,7 @@ function initHamburger() {
 // ===== Init =====
 document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
+  initHeroModeSwitch();
   initModals();
   initModalForms();
   initTabs();
