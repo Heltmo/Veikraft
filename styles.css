@@ -245,10 +245,11 @@ button {
   background: rgba(255, 252, 248, 0.94);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(223, 215, 206, 0.7);
+  overflow: visible;
 }
 
 .header-inner {
-  height: 120px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -271,7 +272,8 @@ button {
 }
 
 .brand-logo {
-  height: 140px;
+  height: 80px;
+  max-width: 280px;
   width: auto;
   object-fit: contain;
 }
