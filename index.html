@@ -7,7 +7,7 @@
   <meta name="description" content="B2B bud- og courier-kapasitet på kort varsel. Same-day leveranser og faste ruter. Bli courier-partner og motta oppdrag.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
   <!-- HEADER -->
   <header class="site-header" id="site-header">
     <div class="container header-inner">
-      <a href="/" class="brand">veikraft<span class="brand-dot">.</span></a>
+      <a href="/" class="brand"><img src="logo.png" alt="VeiKraft logo" class="brand-logo">veikraft<span class="brand-dot">.</span></a>
       <nav class="main-nav" id="mainNav" aria-label="Hovednavigasjon">
         <a href="#bedrifter">For bedrifter</a>
         <a href="#courier">For courier</a>
@@ -35,48 +35,72 @@
     <!-- HERO -->
     <section class="hero" id="hero">
       <div class="hero-bg"></div>
-      <div class="container hero-center fade-up">
-        <span class="badge">veikraft</span>
-        <h1>Budkapasitet når du trenger det.<br>Oppdrag når du vil ha det.</h1>
-        <p class="hero-sub">veikraft kobler bedrifter med pålitelige sjåfører. Få budkapasitet på kort varsel — eller flere B2B-oppdrag uten salgsarbeid.</p>
-        <div class="hero-selector">
-          <button class="btn btn-primary btn-lg selector-trigger" id="mainSelector">
-            Kom i gang <span class="selector-arrow">&#9662;</span>
-          </button>
-          <div class="selector-dropdown" id="selectorDropdown">
-            <a href="#bedrifter" class="selector-option" data-modal="bedriftModal">
-              <span class="selector-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span>
-              <div>
-                <strong>For bedrifter</strong>
-                <span>Trenger budkapasitet</span>
-              </div>
-            </a>
-            <div class="selector-option has-submenu" id="driverOption">
-              <span class="selector-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h.01"/><path d="M17 7h.01"/><path d="M7 17h.01"/><path d="M17 17h.01"/><path d="m8 12 4 4 4-4"/></svg></span>
-              <div>
-                <strong>For sjåfører</strong>
-                <span>Få oppdrag</span>
-              </div>
-              <span class="submenu-arrow">&#9656;</span>
-            </div>
-            <div class="selector-submenu" id="driverSubmenu">
-              <a href="#courier" class="selector-option" data-modal="driverModal">
-                <span class="selector-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-                <div>
-                  <strong>Søker jobb</strong>
-                  <span>Send CV og søknad</span>
+      <div class="container hero-wrap fade-up">
+        <div class="hero-center">
+          <span class="badge">veikraft for bedrifter og sjåfører</span>
+          <h1>Riktig kapasitet, raskt. Et nettverk bygget for B2B-logistikk.</h1>
+          <p class="hero-sub">Inspirert av et mer moderne rekrutterings- og bemanningsuttrykk: tydelig, direkte og handlingsdrevet. Få budkapasitet på kort varsel eller tilgang til nye oppdrag.</p>
+          <div class="hero-actions">
+            <div class="hero-selector">
+              <button class="btn btn-primary btn-lg selector-trigger" id="mainSelector">
+                Kom i gang <span class="selector-arrow">&#9662;</span>
+              </button>
+              <div class="selector-dropdown" id="selectorDropdown">
+                <a href="#bedrifter" class="selector-option" data-modal="bedriftModal">
+                  <span class="selector-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span>
+                  <div>
+                    <strong>For bedrifter</strong>
+                    <span>Trenger budkapasitet</span>
+                  </div>
+                </a>
+                <div class="selector-option has-submenu" id="driverOption">
+                  <span class="selector-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h.01"/><path d="M17 7h.01"/><path d="M7 17h.01"/><path d="M17 17h.01"/><path d="m8 12 4 4 4-4"/></svg></span>
+                  <div>
+                    <strong>For sjåfører</strong>
+                    <span>Få oppdrag</span>
+                  </div>
+                  <span class="submenu-arrow">&#9656;</span>
                 </div>
-              </a>
-              <a href="#courier" class="selector-option" data-modal="courierModal">
-                <span class="selector-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
-                <div>
-                  <strong>Har foretak</strong>
-                  <span>Bli courier-partner</span>
+                <div class="selector-submenu" id="driverSubmenu">
+                  <a href="#courier" class="selector-option" data-modal="driverModal">
+                    <span class="selector-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                    <div>
+                      <strong>Søker jobb</strong>
+                      <span>Send CV og søknad</span>
+                    </div>
+                  </a>
+                  <a href="#courier" class="selector-option" data-modal="courierModal">
+                    <span class="selector-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+                    <div>
+                      <strong>Har foretak</strong>
+                      <span>Bli courier-partner</span>
+                    </div>
+                  </a>
                 </div>
-              </a>
+              </div>
             </div>
+            <a class="btn btn-outline btn-lg" href="#services">Se tjenester</a>
           </div>
         </div>
+        <aside class="hero-panel" aria-label="Nøkkeltall og målgrupper">
+          <div class="hero-panel-card">
+            <p class="panel-kicker">For bedrifter</p>
+            <h3>Ekstra kapasitet ved topper</h3>
+            <p>Same-day, faste ruter og backup med én kontaktperson.</p>
+            <button class="btn btn-dark btn-sm" data-modal="bedriftModal">Få tilbud</button>
+          </div>
+          <div class="hero-panel-card">
+            <p class="panel-kicker">For sjåfører</p>
+            <h3>Flere B2B-oppdrag</h3>
+            <p>Motta relevante forespørsler med tydelig rute og krav.</p>
+            <button class="btn btn-outline btn-sm" data-modal="courierModal">Registrer deg</button>
+          </div>
+          <div class="hero-metrics">
+            <div><strong>10+</strong><span>bransjer</span></div>
+            <div><strong>B2B</strong><span>fokusert</span></div>
+            <div><strong>POD</strong><span>på alle oppdrag</span></div>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -419,7 +443,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-col">
-          <div class="footer-brand">veikraft<span class="brand-dot">.</span></div>
+          <div class="footer-brand"><img src="logo.png" alt="VeiKraft logo" class="footer-logo">veikraft<span class="brand-dot">.</span></div>
           <p class="footer-tagline">Pålitelig budkapasitet for norske bedrifter.</p>
         </div>
         <div class="footer-col">
