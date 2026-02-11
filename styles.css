@@ -320,7 +320,8 @@ button {
 /* ===== HERO ===== */
 .hero {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  z-index: 2;
   min-height: 640px;
   padding: 92px 0 154px;
   background: #101417;
@@ -457,6 +458,8 @@ button {
 }
 
 .hero-context {
+  position: relative;
+  z-index: 1;
   background: #f1f1f1;
   padding: 108px 0 56px;
 }
