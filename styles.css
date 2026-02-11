@@ -272,8 +272,8 @@ button {
 }
 
 .brand-logo {
-  height: 24px;
-  max-width: 196px;
+  height: 36px;
+  max-width: 240px;
   width: auto;
   object-fit: contain;
 }
