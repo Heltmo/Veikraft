@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="120" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="10,80 70,20 110,20 50,80" fill="#2D8CFF"/>
+  <polygon points="80,80 140,20 180,20 120,80" fill="#BFC5CC"/>
+  <polygon points="150,80 210,20 250,20 190,80" fill="#FF7A00"/>
+  <text x="270" y="78" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700" fill="#F2EBE1">
+    Vei<tspan fill="#FF7A00">Kraft</tspan>
+  </text>
+</svg>

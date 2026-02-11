@@ -1359,7 +1359,8 @@ button {
 }
 
 .footer-logo {
-  height: 56px;
+  height: 36px;
+  max-width: 240px;
   width: auto;
   object-fit: contain;
 }
