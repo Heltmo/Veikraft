@@ -4,8 +4,15 @@
   --accent-strong: #0a8f83;
   --accent-soft: #d7f3ef;
   --accent-wash: #ecfbf9;
+  --accent-alt: #ff7a00;
+  --accent-alt-strong: #d95c00;
+  --accent-alt-soft: #ffe7d1;
+  --accent-alt-wash: #fff4ea;
   --accent-rgb: 12, 169, 154;
   --accent-strong-rgb: 10, 143, 131;
+  --accent-alt-rgb: 255, 122, 0;
+  --accent-mix: linear-gradient(138deg, var(--accent) 0%, #22bcb0 40%, var(--accent-alt) 100%);
+  --accent-mix-strong: linear-gradient(138deg, var(--accent-strong) 0%, #159c90 38%, var(--accent-alt-strong) 100%);
   --ink: #171513;
   --ink-soft: #2f2b27;
   --muted: #6f6a64;
@@ -67,7 +74,7 @@ a {
 }
 
 a:hover {
-  color: var(--accent);
+  color: var(--accent-alt);
 }
 
 a:focus-visible,
@@ -108,7 +115,7 @@ button {
 }
 
 .section-dark .section-tag {
-  color: var(--accent);
+  color: var(--accent-alt);
 }
 
 .section-header {
@@ -125,7 +132,7 @@ button {
   text-transform: uppercase;
   letter-spacing: 0.17em;
   font-weight: 800;
-  color: var(--accent-strong);
+  color: var(--accent-alt-strong);
   margin-bottom: 14px;
 }
 
@@ -171,14 +178,15 @@ button {
 }
 
 .btn-primary {
-  background: linear-gradient(140deg, var(--accent) 0%, var(--accent-strong) 100%);
+  background: var(--accent-mix);
   color: #fff;
-  box-shadow: 0 10px 24px rgba(var(--accent-rgb), 0.3);
+  box-shadow: 0 10px 24px rgba(var(--accent-rgb), 0.24), 0 10px 24px rgba(var(--accent-alt-rgb), 0.2);
 }
 
 .btn-primary:hover {
+  background: var(--accent-mix-strong);
   color: #fff;
-  box-shadow: 0 14px 30px rgba(var(--accent-strong-rgb), 0.34);
+  box-shadow: 0 14px 30px rgba(var(--accent-strong-rgb), 0.26), 0 14px 30px rgba(var(--accent-alt-rgb), 0.24);
 }
 
 .btn-dark {
@@ -208,9 +216,9 @@ button {
 }
 
 .btn-outline:hover {
-  background: var(--accent-wash);
-  border-color: rgba(var(--accent-rgb), 0.45);
-  color: var(--accent-strong);
+  background: linear-gradient(140deg, var(--accent-wash) 0%, var(--accent-alt-wash) 100%);
+  border-color: rgba(var(--accent-alt-rgb), 0.45);
+  color: var(--accent-alt-strong);
 }
 
 .btn-outline-light {
@@ -349,7 +357,9 @@ button {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 84% 18%, rgba(var(--accent-rgb), 0.2) 0%, rgba(var(--accent-rgb), 0) 45%);
+  background:
+    radial-gradient(circle at 84% 18%, rgba(var(--accent-rgb), 0.24) 0%, rgba(var(--accent-rgb), 0) 45%),
+    radial-gradient(circle at 16% 84%, rgba(var(--accent-alt-rgb), 0.22) 0%, rgba(var(--accent-alt-rgb), 0) 44%);
 }
 
 .hero[data-hero-mode='bedrift'] .hero-bg {
@@ -389,8 +399,9 @@ button {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: #fff;
-  background: rgba(var(--accent-rgb), 0.34);
-  border: 1px solid rgba(var(--accent-rgb), 0.6);
+  background: linear-gradient(120deg, rgba(var(--accent-rgb), 0.74) 0%, rgba(var(--accent-alt-rgb), 0.68) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  box-shadow: 0 8px 22px rgba(var(--accent-rgb), 0.2), 0 8px 22px rgba(var(--accent-alt-rgb), 0.16);
   border-radius: var(--radius-pill);
   padding: 7px 16px;
   margin-bottom: 22px;
@@ -453,7 +464,7 @@ button {
 }
 
 .hero-mode-tab.active {
-  background: linear-gradient(140deg, var(--accent) 0%, var(--accent-strong) 100%);
+  background: var(--accent-mix);
   color: #fff;
 }
 
@@ -523,8 +534,8 @@ button {
   border-radius: 999px;
   display: grid;
   place-items: center;
-  background: #f3f3f3;
-  color: var(--accent-strong);
+  background: linear-gradient(140deg, rgba(var(--accent-rgb), 0.14) 0%, rgba(var(--accent-alt-rgb), 0.18) 100%);
+  color: var(--accent-alt-strong);
 }
 
 .hero-link-label {
@@ -536,12 +547,12 @@ button {
 .hero-link-arrow {
   font-size: 2rem;
   line-height: 1;
-  color: var(--accent-strong);
+  color: var(--accent-alt);
   margin-right: 6px;
 }
 
 .hero-context-link:hover .hero-link-label {
-  color: var(--accent-strong);
+  color: var(--accent-alt-strong);
 }
 
 /* Existing optional dual path layout */
@@ -625,8 +636,8 @@ button {
   width: 26px;
   height: 26px;
   border-radius: 8px;
-  background: var(--accent-soft);
-  color: var(--accent-strong);
+  background: linear-gradient(140deg, var(--accent-soft) 0%, var(--accent-alt-soft) 100%);
+  color: var(--accent-alt-strong);
   display: grid;
   place-items: center;
 }
@@ -693,9 +704,9 @@ button {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: var(--accent-soft);
+  background: linear-gradient(140deg, var(--accent-soft) 0%, var(--accent-alt-soft) 100%);
   border: 1px solid rgba(var(--accent-rgb), 0.35);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%230ca99a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23ff7a00' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -860,7 +871,7 @@ button {
   margin-bottom: 10px;
   font-family: 'Sora', 'Manrope', sans-serif;
   font-size: 2rem;
-  background: linear-gradient(130deg, var(--accent) 0%, var(--accent-strong) 100%);
+  background: linear-gradient(130deg, var(--accent) 0%, var(--accent-alt) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -880,7 +891,7 @@ button {
   width: 52px;
   align-self: center;
   height: 2px;
-  background: linear-gradient(90deg, rgba(var(--accent-rgb), 0.2), rgba(var(--accent-rgb), 0.8), rgba(var(--accent-rgb), 0.2));
+  background: linear-gradient(90deg, rgba(var(--accent-rgb), 0.18), rgba(var(--accent-rgb), 0.8) 38%, rgba(var(--accent-alt-rgb), 0.82) 62%, rgba(var(--accent-alt-rgb), 0.2));
   flex-shrink: 0;
 }
 
@@ -912,7 +923,7 @@ button {
   height: 3px;
   border-bottom-left-radius: inherit;
   border-bottom-right-radius: inherit;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-strong) 100%);
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-alt) 100%);
   opacity: 0;
   transition: opacity var(--transition);
 }
@@ -933,8 +944,8 @@ button {
   border-radius: 13px;
   display: grid;
   place-items: center;
-  background: var(--accent-soft);
-  color: var(--accent-strong);
+  background: linear-gradient(140deg, var(--accent-soft) 0%, var(--accent-alt-soft) 100%);
+  color: var(--accent-alt-strong);
   margin-bottom: 16px;
 }
 
@@ -963,8 +974,8 @@ button {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   border-radius: var(--radius-pill);
-  background: var(--accent-wash);
-  color: var(--accent-strong);
+  background: linear-gradient(140deg, var(--accent-wash) 0%, var(--accent-alt-wash) 100%);
+  color: var(--accent-alt-strong);
   padding: 5px 12px;
 }
 
@@ -1035,7 +1046,7 @@ button {
 .pricing-card.featured {
   border-color: rgba(var(--accent-rgb), 0.52);
   box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.35), var(--shadow);
-  background: linear-gradient(180deg, var(--accent-wash) 0%, #fff 54%);
+  background: linear-gradient(140deg, var(--accent-wash) 0%, var(--accent-alt-wash) 44%, #fff 100%);
   transform: scale(1.02);
 }
 
@@ -1053,13 +1064,13 @@ button {
   letter-spacing: 0.09em;
   text-transform: uppercase;
   border-radius: var(--radius-pill);
-  background: var(--accent);
+  background: var(--accent-mix);
   color: #fff;
   padding: 5px 14px;
 }
 
 .pricing-label {
-  color: var(--accent-strong);
+  color: var(--accent-alt-strong);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 11px;
@@ -1111,8 +1122,8 @@ button {
   border-radius: 12px;
   display: grid;
   place-items: center;
-  background: var(--accent-soft);
-  color: var(--accent-strong);
+  background: linear-gradient(140deg, var(--accent-soft) 0%, var(--accent-alt-soft) 100%);
+  color: var(--accent-alt-strong);
 }
 
 .contact-icon svg {
@@ -1577,7 +1588,7 @@ button {
   .step-connector {
     width: 2px;
     height: 34px;
-    background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.16), rgba(var(--accent-rgb), 0.74), rgba(var(--accent-rgb), 0.16));
+    background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.16), rgba(var(--accent-rgb), 0.74) 42%, rgba(var(--accent-alt-rgb), 0.74) 58%, rgba(var(--accent-alt-rgb), 0.16));
   }
 
   .step-card {
