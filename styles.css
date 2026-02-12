@@ -11,8 +11,8 @@
   --accent-rgb: 12, 169, 154;
   --accent-strong-rgb: 10, 143, 131;
   --accent-alt-rgb: 255, 122, 0;
-  --accent-mix: linear-gradient(138deg, var(--accent) 0%, #22bcb0 40%, var(--accent-alt) 100%);
-  --accent-mix-strong: linear-gradient(138deg, var(--accent-strong) 0%, #159c90 38%, var(--accent-alt-strong) 100%);
+  --accent-mix: linear-gradient(140deg, #1db8ac 0%, var(--accent) 48%, var(--accent-strong) 100%);
+  --accent-mix-strong: linear-gradient(140deg, #109f93 0%, var(--accent-strong) 58%, #08796f 100%);
   --ink: #171513;
   --ink-soft: #2f2b27;
   --muted: #6f6a64;
@@ -180,13 +180,13 @@ button {
 .btn-primary {
   background: var(--accent-mix);
   color: #fff;
-  box-shadow: 0 10px 24px rgba(var(--accent-rgb), 0.24), 0 10px 24px rgba(var(--accent-alt-rgb), 0.2);
+  box-shadow: 0 10px 24px rgba(var(--accent-rgb), 0.34), 0 6px 14px rgba(var(--accent-alt-rgb), 0.08);
 }
 
 .btn-primary:hover {
   background: var(--accent-mix-strong);
   color: #fff;
-  box-shadow: 0 14px 30px rgba(var(--accent-strong-rgb), 0.26), 0 14px 30px rgba(var(--accent-alt-rgb), 0.24);
+  box-shadow: 0 14px 30px rgba(var(--accent-strong-rgb), 0.34), 0 8px 18px rgba(var(--accent-alt-rgb), 0.08);
 }
 
 .btn-dark {
@@ -217,8 +217,8 @@ button {
 
 .btn-outline:hover {
   background: linear-gradient(140deg, var(--accent-wash) 0%, var(--accent-alt-wash) 100%);
-  border-color: rgba(var(--accent-alt-rgb), 0.45);
-  color: var(--accent-alt-strong);
+  border-color: rgba(var(--accent-rgb), 0.45);
+  color: var(--accent-strong);
 }
 
 .btn-outline-light {
@@ -358,8 +358,8 @@ button {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 84% 18%, rgba(var(--accent-rgb), 0.24) 0%, rgba(var(--accent-rgb), 0) 45%),
-    radial-gradient(circle at 16% 84%, rgba(var(--accent-alt-rgb), 0.22) 0%, rgba(var(--accent-alt-rgb), 0) 44%);
+    radial-gradient(circle at 84% 18%, rgba(var(--accent-rgb), 0.22) 0%, rgba(var(--accent-rgb), 0) 45%),
+    radial-gradient(circle at 16% 84%, rgba(var(--accent-alt-rgb), 0.08) 0%, rgba(var(--accent-alt-rgb), 0) 44%);
 }
 
 .hero[data-hero-mode='bedrift'] .hero-bg {
@@ -399,9 +399,9 @@ button {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: #fff;
-  background: linear-gradient(120deg, rgba(var(--accent-rgb), 0.74) 0%, rgba(var(--accent-alt-rgb), 0.68) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.38);
-  box-shadow: 0 8px 22px rgba(var(--accent-rgb), 0.2), 0 8px 22px rgba(var(--accent-alt-rgb), 0.16);
+  background: rgba(var(--accent-rgb), 0.42);
+  border: 1px solid rgba(var(--accent-rgb), 0.68);
+  box-shadow: 0 8px 22px rgba(var(--accent-rgb), 0.22);
   border-radius: var(--radius-pill);
   padding: 7px 16px;
   margin-bottom: 22px;
@@ -534,8 +534,8 @@ button {
   border-radius: 999px;
   display: grid;
   place-items: center;
-  background: linear-gradient(140deg, rgba(var(--accent-rgb), 0.14) 0%, rgba(var(--accent-alt-rgb), 0.18) 100%);
-  color: var(--accent-alt-strong);
+  background: rgba(var(--accent-rgb), 0.13);
+  color: var(--accent-strong);
 }
 
 .hero-link-label {
@@ -547,12 +547,12 @@ button {
 .hero-link-arrow {
   font-size: 2rem;
   line-height: 1;
-  color: var(--accent-alt);
+  color: var(--accent-strong);
   margin-right: 6px;
 }
 
 .hero-context-link:hover .hero-link-label {
-  color: var(--accent-alt-strong);
+  color: var(--accent-strong);
 }
 
 /* Existing optional dual path layout */
