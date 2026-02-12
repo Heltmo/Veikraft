@@ -1,9 +1,11 @@
 /* ===== DESIGN SYSTEM ===== */
 :root {
-  --accent: #ef4e1a;
-  --accent-strong: #cf3707;
-  --accent-soft: #ffe3d7;
-  --accent-wash: #fff3ed;
+  --accent: #ff7a00;
+  --accent-strong: #d95c00;
+  --accent-soft: #ffe7d1;
+  --accent-wash: #fff4ea;
+  --accent-rgb: 255, 122, 0;
+  --accent-strong-rgb: 217, 92, 0;
   --ink: #171513;
   --ink-soft: #2f2b27;
   --muted: #6f6a64;
@@ -73,7 +75,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid rgba(239, 78, 26, 0.35);
+  outline: 3px solid rgba(255, 122, 0, 0.35);
   outline-offset: 2px;
 }
 
@@ -106,7 +108,7 @@ button {
 }
 
 .section-dark .section-tag {
-  color: #ff8e63;
+  color: var(--accent);
 }
 
 .section-header {
@@ -171,12 +173,12 @@ button {
 .btn-primary {
   background: linear-gradient(140deg, var(--accent) 0%, var(--accent-strong) 100%);
   color: #fff;
-  box-shadow: 0 10px 24px rgba(239, 78, 26, 0.32);
+  box-shadow: 0 10px 24px rgba(255, 122, 0, 0.3);
 }
 
 .btn-primary:hover {
   color: #fff;
-  box-shadow: 0 14px 30px rgba(207, 55, 7, 0.36);
+  box-shadow: 0 14px 30px rgba(217, 92, 0, 0.34);
 }
 
 .btn-dark {
@@ -207,7 +209,7 @@ button {
 
 .btn-outline:hover {
   background: #fff6f1;
-  border-color: #efb39d;
+  border-color: rgba(var(--accent-rgb), 0.45);
   color: var(--accent-strong);
 }
 
@@ -347,7 +349,7 @@ button {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 84% 18%, rgba(24, 204, 187, 0.18) 0%, rgba(24, 204, 187, 0) 45%);
+  background: radial-gradient(circle at 84% 18%, rgba(var(--accent-rgb), 0.2) 0%, rgba(var(--accent-rgb), 0) 45%);
 }
 
 .hero[data-hero-mode='bedrift'] .hero-bg {
@@ -386,9 +388,9 @@ button {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: #f3fffc;
-  background: rgba(0, 163, 149, 0.48);
-  border: 1px solid rgba(0, 201, 185, 0.5);
+  color: #fff;
+  background: rgba(var(--accent-rgb), 0.34);
+  border: 1px solid rgba(var(--accent-rgb), 0.6);
   border-radius: var(--radius-pill);
   padding: 7px 16px;
   margin-bottom: 22px;
@@ -451,7 +453,7 @@ button {
 }
 
 .hero-mode-tab.active {
-  background: #0ca99a;
+  background: linear-gradient(140deg, var(--accent) 0%, var(--accent-strong) 100%);
   color: #fff;
 }
 
@@ -522,7 +524,7 @@ button {
   display: grid;
   place-items: center;
   background: #f3f3f3;
-  color: #0ca99a;
+  color: var(--accent-strong);
 }
 
 .hero-link-label {
@@ -534,12 +536,12 @@ button {
 .hero-link-arrow {
   font-size: 2rem;
   line-height: 1;
-  color: #0ca99a;
+  color: var(--accent-strong);
   margin-right: 6px;
 }
 
 .hero-context-link:hover .hero-link-label {
-  color: #0ca99a;
+  color: var(--accent-strong);
 }
 
 /* Existing optional dual path layout */
@@ -692,8 +694,8 @@ button {
   height: 18px;
   border-radius: 50%;
   background: var(--accent-soft);
-  border: 1px solid rgba(239, 78, 26, 0.35);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23ef4e1a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+  border: 1px solid rgba(var(--accent-rgb), 0.35);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23ff7a00' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -711,8 +713,8 @@ button {
 }
 
 .section-dark .value-list li::before {
-  background-color: rgba(239, 78, 26, 0.2);
-  border-color: rgba(239, 78, 26, 0.36);
+  background-color: rgba(var(--accent-rgb), 0.2);
+  border-color: rgba(var(--accent-rgb), 0.36);
 }
 
 .cta-group {
@@ -748,7 +750,7 @@ button {
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: linear-gradient(140deg, rgba(239, 78, 26, 0.08) 0%, rgba(239, 78, 26, 0) 38%);
+  background: linear-gradient(140deg, rgba(var(--accent-rgb), 0.08) 0%, rgba(var(--accent-rgb), 0) 38%);
 }
 
 .visual-card.dark {
@@ -758,7 +760,7 @@ button {
 }
 
 .visual-card.dark::before {
-  background: linear-gradient(160deg, rgba(239, 78, 26, 0.16) 0%, rgba(239, 78, 26, 0) 46%);
+  background: linear-gradient(160deg, rgba(var(--accent-rgb), 0.16) 0%, rgba(var(--accent-rgb), 0) 46%);
 }
 
 .visual-step {
@@ -851,14 +853,14 @@ button {
 .step-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow);
-  border-color: #e8c8b8;
+  border-color: rgba(var(--accent-rgb), 0.28);
 }
 
 .step-num {
   margin-bottom: 10px;
   font-family: 'Sora', 'Manrope', sans-serif;
   font-size: 2rem;
-  background: linear-gradient(130deg, var(--accent) 0%, #ff8d60 100%);
+  background: linear-gradient(130deg, var(--accent) 0%, var(--accent-strong) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -878,7 +880,7 @@ button {
   width: 52px;
   align-self: center;
   height: 2px;
-  background: linear-gradient(90deg, rgba(239, 78, 26, 0.2), rgba(239, 78, 26, 0.8), rgba(239, 78, 26, 0.2));
+  background: linear-gradient(90deg, rgba(var(--accent-rgb), 0.2), rgba(var(--accent-rgb), 0.8), rgba(var(--accent-rgb), 0.2));
   flex-shrink: 0;
 }
 
@@ -910,7 +912,7 @@ button {
   height: 3px;
   border-bottom-left-radius: inherit;
   border-bottom-right-radius: inherit;
-  background: linear-gradient(90deg, var(--accent) 0%, #ff9f79 100%);
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-strong) 100%);
   opacity: 0;
   transition: opacity var(--transition);
 }
@@ -918,7 +920,7 @@ button {
 .service-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow);
-  border-color: #e7c5b4;
+  border-color: rgba(var(--accent-rgb), 0.28);
 }
 
 .service-card:hover::after {
@@ -1031,8 +1033,8 @@ button {
 }
 
 .pricing-card.featured {
-  border-color: rgba(239, 78, 26, 0.52);
-  box-shadow: 0 0 0 1px rgba(239, 78, 26, 0.35), var(--shadow);
+  border-color: rgba(var(--accent-rgb), 0.52);
+  box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.35), var(--shadow);
   background: linear-gradient(180deg, rgba(255, 241, 234, 0.95) 0%, #fff 54%);
   transform: scale(1.02);
 }
@@ -1260,8 +1262,8 @@ button {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: rgba(239, 78, 26, 0.64);
-  box-shadow: 0 0 0 4px rgba(239, 78, 26, 0.14);
+  border-color: rgba(var(--accent-rgb), 0.64);
+  box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.14);
   outline: none;
 }
 
@@ -1575,7 +1577,7 @@ button {
   .step-connector {
     width: 2px;
     height: 34px;
-    background: linear-gradient(180deg, rgba(239, 78, 26, 0.16), rgba(239, 78, 26, 0.74), rgba(239, 78, 26, 0.16));
+    background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.16), rgba(var(--accent-rgb), 0.74), rgba(var(--accent-rgb), 0.16));
   }
 
   .step-card {
