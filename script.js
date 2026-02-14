@@ -1,18 +1,6 @@
-// ===== FormSubmit.co — emails go to kundeservice@veikraft.com =====
-const FORM_EMAIL = 'kundeservice@veikraft.com';
-const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${FORM_EMAIL}`;
-
-// ===== Smooth scroll =====
-document.addEventListener('click', (e) => {
-  const a = e.target.closest('a[href^="#"]');
-  if (!a) return;
-  const hash = a.getAttribute('href');
-  if (hash.startsWith('#')) {
-    e.preventDefault();
-    const el = document.querySelector(hash);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-});
+// ===== Same-origin proxy endpoint =====
+const SUBMIT_URL = '/api/submit';
+const FORM_IDS = ['bedriftForm', 'courierForm', 'driverForm'];
 
 // ===== Helpers =====
 function showMessage(el, msg, success = true) {
@@ -25,12 +13,11 @@ function validateEmail(email) {
 }
 
 async function submitForm(data) {
-  const res = await fetch(FORMSUBMIT_URL, {
+  return await fetch(SUBMIT_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   });
-  return res;
 }
 
 // ===== Scroll animations =====
@@ -97,48 +84,56 @@ function initModals() {
 
 // ===== Modal form handling =====
 function initModalForms() {
-  const forms = document.querySelectorAll('.modal-form');
+  document.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    if (!(form instanceof HTMLFormElement)) return;
+    if (!FORM_IDS.includes(form.id)) return;
 
-  forms.forEach((form) => {
-    form.addEventListener('submit', async (ev) => {
-      ev.preventDefault();
-      const msgEl = form.querySelector('.form-message');
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      const formType = form.dataset.formType;
+    const msgEl = form.querySelector('.form-message');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (!msgEl || !submitBtn) return;
 
-      // Collect data
-      const fd = new FormData(form);
-      const data = {};
-      fd.forEach((v, k) => { data[k] = v; });
-      data._subject = `veikraft — ${formType === 'bedrift' ? 'Bedrift-forespørsel' : formType === 'courier' ? 'Foretaksregistrering' : 'Sjåfør-registrering'}`;
-      data.formType = formType;
+    if (!WEB_APP_URL || !WEB_APP_URL.includes('/exec')) {
+      showMessage(msgEl, 'Apps Script URL mangler eller er ugyldig.', false);
+      return;
+    }
 
-      // Validate email if present
-      if (data.email && !validateEmail(data.email)) {
-        showMessage(msgEl, 'Ugyldig e-postadresse.', false);
-        return;
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.sheet = form.dataset.sheet;
+    data.page = window.location.pathname;
+
+    if (!data.sheet) {
+      showMessage(msgEl, 'Skjema mangler gyldig sheet-navn.', false);
+      return;
+    }
+
+    if (data.email && !validateEmail(data.email)) {
+      showMessage(msgEl, 'Ugyldig e-postadresse.', false);
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.classList.add('loading');
+    showMessage(msgEl, '', true);
+
+    try {
+      const res = await submitForm(data);
+      const out = await res.json();
+      if (out.ok === true) {
+        showMessage(msgEl, 'Takk! Vi tar kontakt snart.', true);
+        form.reset();
+      } else {
+        showMessage(msgEl, 'Noe gikk galt. Prøv igjen.', false);
+        console.error(out);
       }
-
-      submitBtn.disabled = true;
-      submitBtn.classList.add('loading');
-      showMessage(msgEl, '', true);
-
-      try {
-        const res = await submitForm(data);
-        if (res.ok) {
-          showMessage(msgEl, 'Takk! Vi tar kontakt snart.', true);
-          form.reset();
-        } else {
-          showMessage(msgEl, 'Noe gikk galt. Prøv igjen eller send e-post direkte.', false);
-        }
-      } catch {
-        showMessage(msgEl, 'Kunne ikke sende. Sjekk internett-tilkoblingen.', false);
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.classList.remove('loading');
-      }
-    });
+    } catch (error) {
+      showMessage(msgEl, 'Kunne ikke sende. Sjekk internett-tilkoblingen.', false);
+      console.error(error);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('loading');
+    }
   });
 }
 
@@ -266,60 +261,6 @@ function initHeroModeSwitch() {
   applyMode(hero.dataset.heroMode || 'bedrift');
 }
 
-// ===== Hero Selector =====
-function initHeroSelector() {
-  const trigger = document.getElementById('mainSelector');
-  const dropdown = document.getElementById('selectorDropdown');
-  const driverOption = document.getElementById('driverOption');
-  const driverSubmenu = document.getElementById('driverSubmenu');
-
-  if (!trigger || !dropdown) return;
-
-  // Toggle main dropdown
-  trigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    trigger.classList.toggle('active');
-    dropdown.classList.toggle('active');
-  });
-
-  // Toggle driver submenu
-  if (driverOption && driverSubmenu) {
-    driverOption.addEventListener('click', (e) => {
-      e.stopPropagation();
-      driverOption.classList.toggle('active');
-      driverSubmenu.classList.toggle('active');
-    });
-  }
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!trigger.contains(e.target) && !dropdown.contains(e.target)) {
-      trigger.classList.remove('active');
-      dropdown.classList.remove('active');
-      if (driverOption) driverOption.classList.remove('active');
-      if (driverSubmenu) driverSubmenu.classList.remove('active');
-    }
-  });
-
-  // Handle option clicks - open modal
-  dropdown.querySelectorAll('.selector-option[data-modal]').forEach((option) => {
-    option.addEventListener('click', (e) => {
-      e.preventDefault();
-      const modalId = option.dataset.modal;
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-      // Close dropdown
-      trigger.classList.remove('active');
-      dropdown.classList.remove('active');
-      if (driverOption) driverOption.classList.remove('active');
-      if (driverSubmenu) driverSubmenu.classList.remove('active');
-    });
-  });
-}
-
 // ===== Hamburger =====
 function initHamburger() {
   const hamburger = document.getElementById('hamburger');
@@ -348,5 +289,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initModalForms();
   initTabs();
   initHamburger();
-  initHeroSelector();
 });
