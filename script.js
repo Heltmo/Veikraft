@@ -182,18 +182,18 @@ function initHeroModeSwitch() {
   const modes = {
     bedrift: {
       badge: 'For bedrift',
-      title: 'Bemanning til varetransport og distribusjon',
-      sub: 'Veikraft hjelper bedrifter med sjåfører og transportkapasitet for faste ruter, sesongtopper og ekspresslevering.',
-      primary: { text: 'Få bemanningstilbud', modal: 'bedriftModal' },
+      title: 'Transportkapasitet til varetransport og distribusjon',
+      sub: 'Veikraft sikrer sjåfør- og transportkapasitet for faste ruter, sesongtopper og ekspress.',
+      primary: { text: 'Få kapasitetstilbud', modal: 'bedriftModal' },
       secondary: { text: 'Se løsninger', href: '#bedrifter' },
       context: {
-        title: 'Vi finner riktig transportkompetanse',
-        lead: 'Vi leverer bemanning til varetransport for nettbutikker, matkasser, blomsterlevering og pakkedistribusjon.',
-        body: 'Typiske oppdragsmiljøer er aktører som HelloFresh, Oda, Interflora, Bring, Posten og lignende logistikkmiljøer.',
+        title: 'Vi setter opp riktig transportkapasitet',
+        lead: 'Vi leverer transportkapasitet til varetransport og distribusjon for nettbutikker, matkasser, blomsterlevering og pakkedistribusjon.',
+        body: 'Typiske distribusjonsmiljøer er aktører som HelloFresh, Oda, Interflora, Bring, Posten og lignende logistikkmiljøer.',
       },
       links: [
-        { label: 'Innleie til varetransport', href: '#bedrifter' },
-        { label: 'Slik bemanner vi ruter', href: '#how' },
+        { label: 'Kapasitet til varetransport', href: '#bedrifter' },
+        { label: 'Slik setter vi opp ruter', href: '#how' },
         { label: 'Kontakt oss', href: '#contact' },
         { label: 'Dekningsområder', href: '#contact' },
       ],
@@ -206,7 +206,7 @@ function initHeroModeSwitch() {
       secondary: { text: 'Se oppdrag', href: '#courier' },
       context: {
         title: 'Jobb med kjente transportoppdrag',
-        lead: 'Vi matcher deg med oppdrag innen distribusjon, bud og terminaldrift i ditt område.',
+        lead: 'Vi kobler deg til oppdrag innen distribusjon, siste mil og terminaldrift i ditt område.',
         body: 'Du kan bli vurdert til oppdrag for miljøer som Bring, Posten, Oda, Interflora og lignende aktører.',
       },
       links: [
