@@ -156,131 +156,6 @@ function initTabs() {
   });
 }
 
-// ===== Hero mode switch (Jobbsoker / Bedrift) =====
-function initHeroModeSwitch() {
-  const hero = document.getElementById('hero');
-  const modeTabs = document.querySelectorAll('[data-hero-mode-tab]');
-  if (!hero || !modeTabs.length) return;
-
-  const ui = {
-    badge: document.getElementById('heroBadge'),
-    title: document.getElementById('heroTitle'),
-    sub: document.getElementById('heroSub'),
-    primaryBtn: document.getElementById('heroPrimaryBtn'),
-    secondaryBtn: document.getElementById('heroSecondaryBtn'),
-    tertiaryLink: document.getElementById('heroTertiaryLink'),
-    contextTitle: document.getElementById('heroContextTitle'),
-    contextLead: document.getElementById('heroContextLead'),
-    contextBody: document.getElementById('heroContextBody'),
-    links: [
-      { anchor: document.getElementById('heroLink1'), label: document.getElementById('heroLinkLabel1') },
-      { anchor: document.getElementById('heroLink2'), label: document.getElementById('heroLinkLabel2') },
-      { anchor: document.getElementById('heroLink3'), label: document.getElementById('heroLinkLabel3') },
-      { anchor: document.getElementById('heroLink4'), label: document.getElementById('heroLinkLabel4') },
-    ],
-  };
-
-  const modes = {
-    bedrift: {
-      badge: 'For bedrift',
-      title: 'Transportkapasitet til varetransport og distribusjon',
-      sub: 'Veikraft sikrer sjåfør- og transportkapasitet for faste ruter, sesongtopper og ekspress.',
-      primary: { text: 'Få kapasitetstilbud', modal: 'bedriftModal' },
-      secondary: { text: 'Se løsninger', href: '#bedrifter' },
-      tertiary: null,
-      context: {
-        title: 'Vi setter opp riktig transportkapasitet',
-        lead: 'Vi leverer transportkapasitet til varetransport og distribusjon for nettbutikker, matkasser, blomsterlevering og pakkedistribusjon.',
-        body: 'Typiske distribusjonsmiljøer er aktører som HelloFresh, Oda, Interflora, Bring, Posten og lignende logistikkmiljøer.',
-      },
-      links: [
-        { label: 'Kapasitet til varetransport', href: '#bedrifter' },
-        { label: 'Slik setter vi opp ruter', href: '#how' },
-        { label: 'Kontakt oss', href: '#contact' },
-        { label: 'Dekningsområder', href: '#contact' },
-      ],
-    },
-    jobbsoker: {
-      badge: 'For jobbsøker',
-      title: 'Få jobb innen varetransport',
-      sub: 'Vi hjelper deg inn i oppdrag hos transport- og logistikkmiljøer som trenger sjåfører nå.',
-      primary: { text: 'Registrer sjåfør', modal: 'driverModal' },
-      secondary: { text: 'Registrer transportforetak', modal: 'courierModal', href: '#courier' },
-      tertiary: { text: 'Se oppdrag', href: '#courier' },
-      context: {
-        title: 'Jobb med kjente transportoppdrag',
-        lead: 'Vi kobler deg til oppdrag innen distribusjon, siste mil og terminaldrift i ditt område.',
-        body: 'Du kan bli vurdert til oppdrag for miljøer som Bring, Posten, Oda, Interflora og lignende aktører.',
-      },
-      links: [
-        { label: 'Finn ledige oppdrag', href: '#courier' },
-        { label: 'Registrer sjåførprofil', href: '#courier' },
-        { label: 'Registrer transportforetak', href: '#courier' },
-        { label: 'Se områder vi dekker', href: '#contact' },
-      ],
-    },
-  };
-
-  function applyMode(modeKey) {
-    const mode = modes[modeKey] || modes.bedrift;
-    hero.dataset.heroMode = modeKey;
-
-    if (ui.badge) ui.badge.textContent = mode.badge;
-    if (ui.title) ui.title.textContent = mode.title;
-    if (ui.sub) ui.sub.textContent = mode.sub;
-
-    if (ui.primaryBtn) {
-      ui.primaryBtn.textContent = mode.primary.text;
-      ui.primaryBtn.dataset.modal = mode.primary.modal;
-    }
-
-    if (ui.secondaryBtn) {
-      ui.secondaryBtn.textContent = mode.secondary.text;
-      ui.secondaryBtn.setAttribute('href', mode.secondary.href || '#');
-      if (mode.secondary.modal) {
-        ui.secondaryBtn.dataset.modal = mode.secondary.modal;
-      } else {
-        ui.secondaryBtn.removeAttribute('data-modal');
-      }
-    }
-
-    if (ui.tertiaryLink) {
-      if (mode.tertiary) {
-        ui.tertiaryLink.textContent = mode.tertiary.text;
-        ui.tertiaryLink.setAttribute('href', mode.tertiary.href);
-        ui.tertiaryLink.hidden = false;
-      } else {
-        ui.tertiaryLink.hidden = true;
-      }
-    }
-
-    if (ui.contextTitle) ui.contextTitle.textContent = mode.context.title;
-    if (ui.contextLead) ui.contextLead.textContent = mode.context.lead;
-    if (ui.contextBody) ui.contextBody.textContent = mode.context.body;
-
-    ui.links.forEach((link, index) => {
-      const data = mode.links[index];
-      if (!data) return;
-      if (link.label) link.label.textContent = data.label;
-      if (link.anchor) link.anchor.setAttribute('href', data.href);
-    });
-
-    modeTabs.forEach((tab) => {
-      const active = tab.dataset.heroModeTab === modeKey;
-      tab.classList.toggle('active', active);
-      tab.setAttribute('aria-selected', String(active));
-    });
-  }
-
-  modeTabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      applyMode(tab.dataset.heroModeTab || 'bedrift');
-    });
-  });
-
-  applyMode(hero.dataset.heroMode || 'bedrift');
-}
-
 // ===== Hamburger =====
 function initHamburger() {
   const hamburger = document.getElementById('hamburger');
@@ -304,7 +179,6 @@ function initHamburger() {
 // ===== Init =====
 document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
-  initHeroModeSwitch();
   initModals();
   initModalForms();
   initTabs();

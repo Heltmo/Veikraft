@@ -75,7 +75,7 @@
   <main>
 
     <!-- HERO -->
-    <section class="hero" id="hero" data-hero-mode="bedrift">
+    <section class="hero" id="hero">
       <div class="hero-bg"></div>
       <div class="container hero-center fade-up">
         <span class="badge" id="heroBadge">For bedrift</span>
@@ -85,11 +85,11 @@
           <button class="btn btn-primary btn-lg" id="heroPrimaryBtn" data-modal="bedriftModal">Få kapasitetstilbud</button>
           <a class="btn btn-outline btn-lg" id="heroSecondaryBtn" href="#bedrifter">Se løsninger</a>
         </div>
-        <a class="hero-tertiary-link" id="heroTertiaryLink" href="#courier" hidden>Se oppdrag</a>
       </div>
-      <div class="hero-mode-tabs" role="tablist" aria-label="Velg målgruppe">
-        <button class="hero-mode-tab" data-hero-mode-tab="jobbsoker" role="tab" aria-selected="false">Jobbsøker</button>
-        <button class="hero-mode-tab active" data-hero-mode-tab="bedrift" role="tab" aria-selected="true">Bedrift</button>
+      <div class="hero-form-tabs" role="group" aria-label="Velg skjema">
+        <button class="hero-form-tab" type="button" data-modal="bedriftModal">Bedrift</button>
+        <button class="hero-form-tab" type="button" data-modal="courierModal">Transportforetak</button>
+        <button class="hero-form-tab" type="button" data-modal="driverModal">Sjåfør</button>
       </div>
     </section>
 
