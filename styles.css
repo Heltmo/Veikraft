@@ -335,8 +335,8 @@ button {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(105deg, rgba(7, 11, 13, 0.7) 0%, rgba(7, 11, 13, 0.45) 42%, rgba(7, 11, 13, 0.25) 100%),
-    url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?w=2200&q=80');
+    linear-gradient(105deg, rgba(7, 11, 13, 0.55) 0%, rgba(7, 11, 13, 0.35) 42%, rgba(7, 11, 13, 0.2) 100%),
+    url('hero-bg.png');
   background-size: cover;
   background-position: center;
   transition: background 0.45s ease;
@@ -354,18 +354,18 @@ button {
 
 .hero[data-hero-mode='bedrift'] .hero-bg {
   background:
-    linear-gradient(105deg, rgba(8, 12, 13, 0.68) 0%, rgba(8, 12, 13, 0.43) 44%, rgba(8, 12, 13, 0.3) 100%),
-    url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=2200&q=80');
+    linear-gradient(105deg, rgba(8, 12, 13, 0.6) 0%, rgba(8, 12, 13, 0.38) 44%, rgba(8, 12, 13, 0.22) 100%),
+    url('hero-bg.png');
   background-size: cover;
   background-position: center;
 }
 
 .hero[data-hero-mode='jobbsoker'] .hero-bg {
   background:
-    linear-gradient(105deg, rgba(8, 12, 13, 0.72) 0%, rgba(8, 12, 13, 0.46) 45%, rgba(8, 12, 13, 0.3) 100%),
-    url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=2200&q=80');
+    linear-gradient(105deg, rgba(8, 12, 13, 0.6) 0%, rgba(8, 12, 13, 0.4) 45%, rgba(8, 12, 13, 0.22) 100%),
+    url('hero-bg.png');
   background-size: cover;
-  background-position: center 26%;
+  background-position: center;
 }
 
 .hero-center {
