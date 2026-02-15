@@ -350,6 +350,35 @@
       </div>
     </section>
 
+    <!-- HVEM ER DU? ROLLE-VELGER -->
+    <section id="role-select" class="container section fade-up">
+      <div class="section-header">
+        <span class="section-tag">Kom i gang</span>
+        <h2>Hvem er du?</h2>
+        <p class="section-desc">Velg riktig skjema, så tar vi deg til riktig registrering.</p>
+      </div>
+      <div class="role-grid">
+        <button class="role-card" data-modal="bedriftModal">
+          <div class="role-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
+          <h3>Jeg trenger transport</h3>
+          <span class="role-badge">Bedrift</span>
+          <p>Trenger kapasitet til varetransport og distribusjon.</p>
+        </button>
+        <button class="role-card" data-modal="courierModal">
+          <div class="role-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <h3>Jeg har biler og vil ha oppdrag</h3>
+          <span class="role-badge">Transportforetak</span>
+          <p>Registrer kapasitet og område.</p>
+        </button>
+        <button class="role-card" data-modal="driverModal">
+          <div class="role-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <h3>Jeg er sjåfør og søker oppdrag</h3>
+          <span class="role-badge">Sjåfør</span>
+          <p>Oppgi tilgjengelighet og område.</p>
+        </button>
+      </div>
+    </section>
+
     <!-- KONTAKT -->
     <section id="contact" class="container section fade-up">
       <div class="section-header">
@@ -376,8 +405,9 @@
   <div class="modal-overlay" id="bedriftModal">
     <div class="modal">
       <button class="modal-close" aria-label="Lukk">&times;</button>
-      <h2>Trenger dere kapasitet til transport?</h2>
-      <p class="modal-desc">Send inn behov (område, type oppdrag, volum). Vi setter opp riktig kapasitet for distribusjon og varetransport.</p>
+      <span class="modal-badge">Bedrift</span>
+      <h2>For bedrifter som trenger transportkapasitet</h2>
+      <p class="modal-desc">Fyll inn behov (område, type oppdrag, volum). Vi setter opp riktig kapasitet og bekrefter oppstart.</p>
       <form id="bedriftForm" class="modal-form" data-form-type="bedrift" data-sheet="Staffingrequests">
         <div class="form-row">
           <div class="form-group"><input name="company" type="text" placeholder=" " required><label>Bedriftens navn</label></div>
@@ -400,7 +430,7 @@
           </div>
         </div>
         <div class="form-group"><textarea name="notes" rows="3" placeholder=" "></textarea><label>Kommentar (valgfri)</label></div>
-        <button type="submit" class="btn btn-primary btn-full btn-lg"><span class="btn-text">Send kapasitetsforespørsel</span></button>
+        <button type="submit" class="btn btn-primary btn-full btn-lg"><span class="btn-text">Send forespørsel</span></button>
         <div class="form-message" role="status" aria-live="polite"></div>
       </form>
     </div>
@@ -410,8 +440,9 @@
   <div class="modal-overlay" id="courierModal">
     <div class="modal">
       <button class="modal-close" aria-label="Lukk">&times;</button>
-      <h2>Har du transportforetak og vil ha oppdrag?</h2>
-      <p class="modal-desc">Registrer kapasitet og område. Vi kobler deg til oppdrag innen distribusjon, siste mil og terminaldrift.</p>
+      <span class="modal-badge">Transportforetak</span>
+      <h2>For transportforetak som vil ha oppdrag</h2>
+      <p class="modal-desc">Registrer kapasitet og område. Vi kobler dere til distribusjon, siste mil og ruteproduksjon.</p>
       <form id="courierForm" class="modal-form" data-form-type="courier" data-sheet="TransportCompanies">
         <div class="form-row">
           <div class="form-group"><input name="company" type="text" placeholder=" " required><label>Firmanavn</label></div>
@@ -426,7 +457,7 @@
           <div class="form-group"><input name="capacity" type="text" placeholder=" " required><label>Kjøretøy / kapasitet</label></div>
         </div>
         <div class="form-group"><textarea name="notes" rows="3" placeholder=" "></textarea><label>Annet (valgfri)</label></div>
-        <button type="submit" class="btn btn-primary btn-full btn-lg"><span class="btn-text">Registrer transportforetak</span></button>
+        <button type="submit" class="btn btn-primary btn-full btn-lg"><span class="btn-text">Registrer foretak</span></button>
         <div class="form-message" role="status" aria-live="polite"></div>
       </form>
     </div>
@@ -436,8 +467,9 @@
   <div class="modal-overlay" id="driverModal">
     <div class="modal">
       <button class="modal-close" aria-label="Lukk">&times;</button>
-      <h2>Registrer deg som sjåfør</h2>
-      <p class="modal-desc">Oppgi dine detaljer for å bli vurdert til oppdrag hos transport- og logistikkaktører.</p>
+      <span class="modal-badge">Sjåfør</span>
+      <h2>For sjåfører som søker oppdrag</h2>
+      <p class="modal-desc">Oppgi tilgjengelighet og område. Vi vurderer deg for oppdrag hos samarbeidspartnere.</p>
       <form id="driverForm" class="modal-form" data-form-type="driver" data-sheet="Drivers">
         <div class="form-row">
           <div class="form-group"><input name="name" type="text" placeholder=" " required><label>Fullt navn</label></div>
