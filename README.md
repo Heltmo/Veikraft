@@ -1,40 +1,17 @@
 # Veikraft website
 
 Static site deployed on Vercel with modal forms in `index.html`.
-Frontend submits to `POST /api/submit`, and that endpoint forwards payload to a Google Apps Script Web App that writes to Google Sheets.
+Forms are submitted directly to FormSubmit (email delivery).
 
-## Required: Google Sheets via Apps Script
+## Form email setup (active)
 
-1. Create a Google Sheet with these tabs:
-- `Staffingrequests`
-- `TransportCompanies`
-- `Drivers`
+Configured in:
+- `script.js` -> `FORM_EMAIL`
 
-2. Deploy your Google Apps Script as Web App:
-- Execute as: `Me`
-- Who has access: `Anyone` (or `Anyone with link`)
+Current flow:
+- Frontend sends AJAX POST to `https://formsubmit.co/ajax/<FORM_EMAIL>`
+- No backend/API is required for form delivery
 
-3. Copy the Apps Script `/exec` URL and set it in:
-- `api/submit.js` -> `WEB_APP_URL`
-
-4. Confirm form tab names in `index.html`:
-- `bedriftForm` -> `Staffingrequests`
-- `courierForm` -> `TransportCompanies`
-- `driverForm` -> `Drivers`
-
-## Optional: email notifications via Resend
-
-If configured, every successful submission also sends email notification.
-
-Set these Vercel environment variables:
-- `RESEND_API_KEY`
-- `NOTIFY_EMAIL_FROM` (example: `Veikraft <onboarding@resend.dev>`)
-- `NOTIFY_EMAIL_TO` (comma-separated recipients)
-
-If these vars are missing, submissions still go to Google Sheets only.
-
-## CORS / allowed origins
-
-Allowed origins are configured in `api/submit.js` (`ALLOWED_ORIGINS`), plus:
-- Vercel preview URLs matching `https://veikraft*.vercel.app`
-- localhost for local development
+Notes:
+- FormSubmit must be activated for the recipient email first
+- Content Security Policy allows `https://formsubmit.co` in `vercel.json`

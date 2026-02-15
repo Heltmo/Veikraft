@@ -1,5 +1,6 @@
-// ===== Same-origin proxy endpoint =====
-const SUBMIT_URL = '/api/submit';
+// ===== FormSubmit (email delivery) =====
+const FORM_EMAIL = 'kundeservice@veikraft.com';
+const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${encodeURIComponent(FORM_EMAIL)}`;
 const FORM_IDS = ['bedriftForm', 'courierForm', 'driverForm'];
 
 // ===== Helpers =====
@@ -13,9 +14,9 @@ function validateEmail(email) {
 }
 
 async function submitForm(data) {
-  return await fetch(SUBMIT_URL, {
+  return await fetch(FORMSUBMIT_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify(data),
   });
 }
@@ -95,14 +96,18 @@ function initModalForms() {
     if (!msgEl || !submitBtn) return;
 
     const data = Object.fromEntries(new FormData(form).entries());
-    data.formType = form.dataset.formType || '';
-    data.sheet = form.dataset.sheet;
+    const formType = form.dataset.formType || '';
+    data.formType = formType;
     data.page = window.location.pathname;
 
-    if (!data.sheet) {
-      showMessage(msgEl, 'Skjema mangler gyldig sheet-navn.', false);
-      return;
-    }
+    data._captcha = 'false';
+    data._template = 'table';
+    data._subject =
+      formType === 'bedrift'
+        ? 'veikraft — Bedrift-forespørsel'
+        : formType === 'courier'
+          ? 'veikraft — Registrer transportforetak'
+          : 'veikraft — Registrer sjåfør';
 
     if (data.email && !validateEmail(data.email)) {
       showMessage(msgEl, 'Ugyldig e-postadresse.', false);
@@ -115,8 +120,9 @@ function initModalForms() {
 
     try {
       const res = await submitForm(data);
-      const out = await res.json();
-      if (out.ok === true) {
+      const out = await res.json().catch(() => ({}));
+      const ok = res.ok && (out.success === true || out.success === 'true' || Boolean(out.message));
+      if (ok) {
         showMessage(msgEl, 'Takk! Vi tar kontakt snart.', true);
         form.reset();
       } else {
