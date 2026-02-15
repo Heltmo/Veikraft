@@ -41,7 +41,6 @@ function initScrollAnimations() {
 
 // ===== Modals =====
 function initModals() {
-  const triggers = document.querySelectorAll('[data-modal]');
   const overlays = document.querySelectorAll('.modal-overlay');
 
   function openModal(id) {
@@ -56,11 +55,12 @@ function initModals() {
     document.body.style.overflow = '';
   }
 
-  triggers.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openModal(btn.dataset.modal);
-    });
+  // Delegated trigger handling so dynamic hero mode updates keep working.
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-modal]');
+    if (!btn) return;
+    e.preventDefault();
+    openModal(btn.dataset.modal);
   });
 
   overlays.forEach((overlay) => {
@@ -168,6 +168,7 @@ function initHeroModeSwitch() {
     sub: document.getElementById('heroSub'),
     primaryBtn: document.getElementById('heroPrimaryBtn'),
     secondaryBtn: document.getElementById('heroSecondaryBtn'),
+    tertiaryLink: document.getElementById('heroTertiaryLink'),
     contextTitle: document.getElementById('heroContextTitle'),
     contextLead: document.getElementById('heroContextLead'),
     contextBody: document.getElementById('heroContextBody'),
@@ -186,6 +187,7 @@ function initHeroModeSwitch() {
       sub: 'Veikraft sikrer sjåfør- og transportkapasitet for faste ruter, sesongtopper og ekspress.',
       primary: { text: 'Få kapasitetstilbud', modal: 'bedriftModal' },
       secondary: { text: 'Se løsninger', href: '#bedrifter' },
+      tertiary: null,
       context: {
         title: 'Vi setter opp riktig transportkapasitet',
         lead: 'Vi leverer transportkapasitet til varetransport og distribusjon for nettbutikker, matkasser, blomsterlevering og pakkedistribusjon.',
@@ -202,8 +204,9 @@ function initHeroModeSwitch() {
       badge: 'For jobbsøker',
       title: 'Få jobb innen varetransport',
       sub: 'Vi hjelper deg inn i oppdrag hos transport- og logistikkmiljøer som trenger sjåfører nå.',
-      primary: { text: 'Opprett profil', modal: 'driverModal' },
-      secondary: { text: 'Se oppdrag', href: '#courier' },
+      primary: { text: 'Registrer sjåfør', modal: 'driverModal' },
+      secondary: { text: 'Registrer transportforetak', modal: 'courierModal', href: '#courier' },
+      tertiary: { text: 'Se oppdrag', href: '#courier' },
       context: {
         title: 'Jobb med kjente transportoppdrag',
         lead: 'Vi kobler deg til oppdrag innen distribusjon, siste mil og terminaldrift i ditt område.',
@@ -233,7 +236,22 @@ function initHeroModeSwitch() {
 
     if (ui.secondaryBtn) {
       ui.secondaryBtn.textContent = mode.secondary.text;
-      ui.secondaryBtn.setAttribute('href', mode.secondary.href);
+      ui.secondaryBtn.setAttribute('href', mode.secondary.href || '#');
+      if (mode.secondary.modal) {
+        ui.secondaryBtn.dataset.modal = mode.secondary.modal;
+      } else {
+        ui.secondaryBtn.removeAttribute('data-modal');
+      }
+    }
+
+    if (ui.tertiaryLink) {
+      if (mode.tertiary) {
+        ui.tertiaryLink.textContent = mode.tertiary.text;
+        ui.tertiaryLink.setAttribute('href', mode.tertiary.href);
+        ui.tertiaryLink.hidden = false;
+      } else {
+        ui.tertiaryLink.hidden = true;
+      }
     }
 
     if (ui.contextTitle) ui.contextTitle.textContent = mode.context.title;
