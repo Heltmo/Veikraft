@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Vilkår & betingelser | Veikraft</title>
   <meta name="description" content="Vilkår og betingelser for bruk av Veikraft sine tjenester innen bemanning, rekruttering og transportrelaterte oppdrag.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://www.veikraft.com/terms.html">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -13,9 +14,6 @@
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -26,7 +24,7 @@
       <nav class="main-nav" id="mainNav">
         <a href="index.html">Hjem</a>
         <a href="index.html#bedrifter">For bedrifter</a>
-        <a href="index.html#courier">For courier</a>
+        <a href="index.html#courier">For jobbsøkere</a>
         <a href="index.html#contact">Kontakt oss</a>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="Meny" aria-expanded="false">
@@ -38,7 +36,7 @@
   <main>
     <section class="section">
       <div class="container legal-page">
-        <p class="legal-meta">Sist oppdatert: Februar 2025</p>
+        <p class="legal-meta">Sist oppdatert: 14. februar 2026</p>
         <h1>Vilkår & betingelser</h1>
 
         <h2>1. Om veikraft</h2>
@@ -128,7 +126,7 @@
         <div class="footer-col">
           <h4>Plattform</h4>
           <a href="index.html#bedrifter">For bedrifter</a>
-          <a href="index.html#courier">For courier & sjåfører</a>
+          <a href="index.html#courier">For jobbsøkere i transport</a>
           <a href="index.html#how">Slik fungerer det</a>
         </div>
         <div class="footer-col">
@@ -139,7 +137,7 @@
         <div class="footer-col">
           <h4>Kontakt</h4>
           <a href="mailto:kundeservice@veikraft.com">kundeservice@veikraft.com</a>
-          <p class="muted" style="color:#64748b;">Man – Fre, 08:00 – 17:00</p>
+          <p class="muted">Man – Fre, 08:00 – 17:00</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -152,9 +150,6 @@
     </div>
   </footer>
 
-  <script>
-    const h = document.getElementById('hamburger'), n = document.getElementById('mainNav');
-    if(h&&n){ h.addEventListener('click',()=>{ const ex=h.getAttribute('aria-expanded')==='true'; h.setAttribute('aria-expanded',String(!ex)); n.classList.toggle('open'); }); }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

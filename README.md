@@ -1,33 +1,40 @@
-# ROD Logistics — Static Landing (starter)
+# Veikraft website
 
-Minimal static landing page for capturing leads for courier capacity. Replace placeholders before public launch.
+Static site deployed on Vercel with modal forms in `index.html`.
+Frontend submits to `POST /api/submit`, and that endpoint forwards payload to a Google Apps Script Web App that writes to Google Sheets.
 
-Files added:
-- index.html — main landing page
-- styles.css — layout and responsive styles
-- script.js — form validation and POST to webhook
-- privacy.html, terms.html, couriers.html — simple pages
+## Required: Google Sheets via Apps Script
 
-Key placeholders to replace in `script.js` and `index.html`:
-- `WEBHOOK_URL` in `script.js` — set to your n8n / Zapier / webhook.site URL
-- `[BrandName]`, `[City]`, `[SLA_Minutes]`, `[Phone]`, `[Email]`, `[CalendlyLink]` in `index.html`
+1. Create a Google Sheet with these tabs:
+- `Staffingrequests`
+- `TransportCompanies`
+- `Drivers`
 
-How to test locally:
+2. Deploy your Google Apps Script as Web App:
+- Execute as: `Me`
+- Who has access: `Anyone` (or `Anyone with link`)
 
-1. Open `index.html` in a browser (double-click or serve with a static server).
-2. Replace `WEBHOOK_URL` with a test webhook (e.g. https://webhook.site) to inspect incoming POSTs.
-3. Submit the form and verify JSON payload includes `timestamp` and `page`.
+3. Copy the Apps Script `/exec` URL and set it in:
+- `api/submit.js` -> `WEB_APP_URL`
 
-Example: use `npx http-server` or Python simple server:
+4. Confirm form tab names in `index.html`:
+- `bedriftForm` -> `Staffingrequests`
+- `courierForm` -> `TransportCompanies`
+- `driverForm` -> `Drivers`
 
-```bash
-# Python 3
-python -m http.server 8000
+## Optional: email notifications via Resend
 
-# then open http://localhost:8000/index.html
-```
+If configured, every successful submission also sends email notification.
 
-Next recommended steps:
-- Configure real webhook (n8n / Zapier) to create leads and send notifications.
-- Add server-side rate-limiting and webhook secret verification if needed.
-- Integrate Calendly or booking link for the Book 10 min CTA.
+Set these Vercel environment variables:
+- `RESEND_API_KEY`
+- `NOTIFY_EMAIL_FROM` (example: `Veikraft <onboarding@resend.dev>`)
+- `NOTIFY_EMAIL_TO` (comma-separated recipients)
+
+If these vars are missing, submissions still go to Google Sheets only.
+
+## CORS / allowed origins
+
+Allowed origins are configured in `api/submit.js` (`ALLOWED_ORIGINS`), plus:
+- Vercel preview URLs matching `https://veikraft*.vercel.app`
+- localhost for local development

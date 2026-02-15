@@ -1,6 +1,13 @@
 const WEB_APP_URL =
   'https://script.google.com/macros/s/AKfycbyaYQ4My6d0W__Dz1549Ly37fInekChwrRIxYWo5EgVaDprh9ug7GYc72wySNlJugTlvQ/exec';
 
+const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
+const NOTIFY_EMAIL_FROM = process.env.NOTIFY_EMAIL_FROM || '';
+const NOTIFY_EMAIL_TO = (process.env.NOTIFY_EMAIL_TO || '')
+  .split(',')
+  .map((v) => v.trim())
+  .filter(Boolean);
+
 const ALLOWED_ORIGINS = new Set([
   'https://www.veikraft.com',
   'https://veikraft.com',
@@ -60,6 +67,40 @@ async function postToAppsScript(payload) {
   throw new Error('Too many redirects from Apps Script');
 }
 
+function createEmailText(payload) {
+  const entries = Object.entries(payload || {})
+    .map(([k, v]) => `${k}: ${String(v ?? '')}`)
+    .join('\n');
+
+  return `Ny innsending fra veikraft.com\n\n${entries}`;
+}
+
+async function sendNotificationEmail(payload) {
+  if (!RESEND_API_KEY || !NOTIFY_EMAIL_FROM || NOTIFY_EMAIL_TO.length === 0) return;
+
+  const subject = `Ny innsending (${payload.formType || 'ukjent'})`;
+  const text = createEmailText(payload);
+
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: NOTIFY_EMAIL_FROM,
+      to: NOTIFY_EMAIL_TO,
+      subject,
+      text,
+    }),
+  });
+
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Resend failed (${res.status}): ${body.slice(0, 200)}`);
+  }
+}
+
 module.exports = async function handler(req, res) {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('Cache-Control', 'no-store');
@@ -109,21 +150,54 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  // Forward to Apps Script
+  let sheetOk = false;
+  let emailOk = false;
+  let sheetData = null;
+  let sheetError = '';
+  let emailError = '';
+
+  // 1) Try Google Sheets first
   try {
     const gasRes = await postToAppsScript(payload);
     const text = await gasRes.text();
 
-    let data;
     try {
-      data = JSON.parse(text);
+      sheetData = JSON.parse(text);
     } catch {
-      data = { ok: gasRes.ok, raw: text };
+      sheetData = { ok: gasRes.ok, raw: text };
     }
 
-    res.status(gasRes.ok ? 200 : 502).json(data);
+    sheetOk = gasRes.ok && sheetData.ok !== false;
+    if (!sheetOk) sheetError = 'Google Sheets returned non-ok response';
   } catch (err) {
+    sheetError = 'Failed to reach Apps Script';
     console.error('Apps Script proxy error:', err);
-    res.status(502).json({ ok: false, error: 'Failed to reach Apps Script' });
   }
+
+  // 2) Try email as additional channel / fallback
+  try {
+    await sendNotificationEmail(payload);
+    emailOk = Boolean(RESEND_API_KEY && NOTIFY_EMAIL_FROM && NOTIFY_EMAIL_TO.length > 0);
+  } catch (err) {
+    emailError = 'Email notification failed';
+    console.error('Email notification error:', err);
+  }
+
+  // Success when at least one channel succeeded.
+  if (sheetOk || emailOk) {
+    res.status(200).json({
+      ok: true,
+      sheetOk,
+      emailOk,
+      sheetData,
+      warning: !sheetOk ? 'Saved via email fallback only' : undefined,
+    });
+    return;
+  }
+
+  res.status(502).json({
+    ok: false,
+    error: sheetError || 'Submission failed',
+    emailError: emailError || undefined,
+  });
 };

@@ -94,12 +94,8 @@ function initModalForms() {
     const submitBtn = form.querySelector('button[type="submit"]');
     if (!msgEl || !submitBtn) return;
 
-    if (!WEB_APP_URL || !WEB_APP_URL.includes('/exec')) {
-      showMessage(msgEl, 'Apps Script URL mangler eller er ugyldig.', false);
-      return;
-    }
-
     const data = Object.fromEntries(new FormData(form).entries());
+    data.formType = form.dataset.formType || '';
     data.sheet = form.dataset.sheet;
     data.page = window.location.pathname;
 

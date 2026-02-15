@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Bemanning for varetransport | Veikraft</title>
   <meta name="description" content="Veikraft sikrer kapasitet i transport og logistikk – punktlige leveranser, rask oppstart og oppdrag på kort varsel.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://www.veikraft.com/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -51,9 +52,6 @@
       ]
     }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -380,7 +378,7 @@
       <button class="modal-close" aria-label="Lukk">&times;</button>
       <h2>Trenger dere bemanning til transport?</h2>
       <p class="modal-desc">Send inn behov (område, type oppdrag, volum). Vi matcher riktig kapasitet for distribusjon og varetransport.</p>
-      <form class="modal-form" data-form-type="bedrift">
+      <form id="bedriftForm" class="modal-form" data-form-type="bedrift" data-sheet="Staffingrequests">
         <div class="form-row">
           <div class="form-group"><input name="company" type="text" placeholder=" " required><label>Bedriftens navn</label></div>
           <div class="form-group"><input name="contact" type="text" placeholder=" " required><label>Kontaktperson</label></div>
@@ -414,7 +412,7 @@
       <button class="modal-close" aria-label="Lukk">&times;</button>
       <h2>Har du transportforetak og vil ha oppdrag?</h2>
       <p class="modal-desc">Registrer kapasitet og område. Vi matcher deg med oppdrag innen distribusjon, bud og terminaldrift.</p>
-      <form class="modal-form" data-form-type="courier">
+      <form id="courierForm" class="modal-form" data-form-type="courier" data-sheet="TransportCompanies">
         <div class="form-row">
           <div class="form-group"><input name="company" type="text" placeholder=" " required><label>Firmanavn</label></div>
           <div class="form-group"><input name="contact" type="text" placeholder=" " required><label>Kontaktperson</label></div>
@@ -440,7 +438,7 @@
       <button class="modal-close" aria-label="Lukk">&times;</button>
       <h2>Registrer deg som sjåfør</h2>
       <p class="modal-desc">Oppgi dine detaljer for å bli vurdert til oppdrag hos transport- og logistikkaktører.</p>
-      <form class="modal-form" data-form-type="driver">
+      <form id="driverForm" class="modal-form" data-form-type="driver" data-sheet="Drivers">
         <div class="form-row">
           <div class="form-group"><input name="name" type="text" placeholder=" " required><label>Fullt navn</label></div>
           <div class="form-group"><input name="phone" type="tel" placeholder=" " required><label>Telefon</label></div>
