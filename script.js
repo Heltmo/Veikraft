@@ -184,7 +184,11 @@ function initModalForms() {
       const out = await res.json().catch(() => ({}));
       const ok = res.ok && (out.success === true || out.success === 'true' || Boolean(out.message));
       if (ok) {
-        showMessage(msgEl, 'Takk! Vi tar kontakt snart.', true);
+        const successMsg =
+          formType === 'bedrift'
+            ? 'Takk! Vi tar kontakt innen 2 timer i arbeidstid.'
+            : 'Takk! Vi tar kontakt snart.';
+        showMessage(msgEl, successMsg, true);
         form.reset();
       } else {
         showMessage(msgEl, 'Noe gikk galt. Prøv igjen.', false);
@@ -197,23 +201,6 @@ function initModalForms() {
       submitBtn.disabled = false;
       submitBtn.classList.remove('loading');
     }
-  });
-}
-
-// ===== Tabs =====
-function initTabs() {
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  tabBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const tabId = btn.dataset.tab;
-      // Deactivate all
-      document.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach((c) => c.classList.remove('active'));
-      // Activate selected
-      btn.classList.add('active');
-      const content = document.getElementById(tabId);
-      if (content) content.classList.add('active');
-    });
   });
 }
 
@@ -242,6 +229,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initModals();
   initModalForms();
-  initTabs();
   initHamburger();
 });
