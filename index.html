@@ -82,9 +82,11 @@
       <div class="container hero-center fade-up">
         <h1 id="heroTitle">Kjøretøy med sjåfør for faste ruter i Oslo, Viken og Vestfold</h1>
         <p class="hero-sub" id="heroSub">For logistikkansvarlige, driftsledere og innkjøpere som må sikre vareflyt uten driftsstans. Oppstart innen 48 timer ved ledig kapasitet.</p>
+        <p class="hero-precision">Kjøretøy med sjåfør. Fast kontaktpunkt. Løpende oppfølging.</p>
         <div class="hero-actions">
           <button class="btn btn-primary" id="heroPrimaryBtn" data-modal="bedriftModal">Få kapasitetstilbud</button>
         </div>
+        <p class="micro-copy hero-reassurance">Svar innen 2 timer i arbeidstid. Uforpliktende.</p>
       </div>
     </section>
 
@@ -196,6 +198,7 @@
         <span class="section-tag">Pris Og Modell</span>
         <h2>Tre tydelige prismodeller</h2>
         <p class="section-desc">Velg modell etter om behovet er kortsiktig, ruteplanlagt eller løpende.</p>
+        <p class="section-note">Pris avhenger av ruteprofil (antall stopp/volum), tidsvindu og driftstid.</p>
       </div>
       <div class="pricing-grid">
         <div class="pricing-card">
@@ -232,6 +235,15 @@
           <li><strong>Bedrifter med sesongvariasjon</strong> som trenger ekstra kapasitet i perioder</li>
           <li><strong>Bedrifter med backup-behov</strong> ved fravær, toppbelastning eller hasteoppdrag</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- BESLUTNINGSKLARHET -->
+    <section id="objections" class="container fade-up objection-row-wrap">
+      <div class="objection-row">
+        <div class="objection-item">Tydelig prismodell (time / rute / avtale)</div>
+        <div class="objection-item">Kapasitet levert som kjøretøy med sjåfør</div>
+        <div class="objection-item">Oppstart normalt innen 48 timer ved ledig kapasitet</div>
       </div>
     </section>
 
@@ -298,6 +310,32 @@
         </div>
       </div>
     </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="container section fade-up">
+      <div class="section-header">
+        <span class="section-tag">FAQ</span>
+        <h2>Ofte stilte spørsmål</h2>
+      </div>
+      <div class="faq-grid">
+        <article class="faq-card">
+          <h3>Hva trenger dere for å gi tilbud?</h3>
+          <p>Område/by, tidsvindu og type behov. Rutegrunnlag hvis tilgjengelig.</p>
+        </article>
+        <article class="faq-card">
+          <h3>Leverer dere bil og sjåfør?</h3>
+          <p>Ja, kapasiteten leveres som kjøretøy med sjåfør.</p>
+        </article>
+        <article class="faq-card">
+          <h3>Hvor raskt kan dere starte?</h3>
+          <p>Normalt innen 48 timer ved ledig kapasitet.</p>
+        </article>
+        <article class="faq-card">
+          <h3>Hvilke områder dekker dere?</h3>
+          <p>Oslo, Viken og Vestfold.</p>
+        </article>
+      </div>
+    </section>
   </main>
 
   <!-- MODALS -->
@@ -319,13 +357,16 @@
           <div class="form-group">
             <select name="need_type" required>
               <option value="" disabled selected></option>
-              <option value="Siste mil">Siste mil / ekspress</option>
-              <option value="Fast rute">Fast rute</option>
-              <option value="Kapasitetsbackup">Kapasitetsbackup</option>
+              <option value="Fast rute (daglig/ukentlig)">Fast rute (daglig/ukentlig)</option>
+              <option value="Ekstrakapasitet ved topper">Ekstrakapasitet ved topper</option>
+              <option value="Backup ved fravær">Backup ved fravær</option>
+              <option value="Midlertidig behov">Midlertidig behov</option>
+              <option value="Annet">Annet</option>
             </select>
             <label>Type behov</label>
           </div>
         </div>
+        <p class="form-help">Har du rutegrunnlag (stopp/tidsvindu)? Oppgi det når vi kontakter deg.</p>
         <button type="submit" class="btn btn-primary btn-full btn-lg"><span class="btn-text">Send forespørsel</span></button>
         <div class="form-message" role="status" aria-live="polite"></div>
       </form>
