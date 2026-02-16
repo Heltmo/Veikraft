@@ -13,6 +13,17 @@ function validateEmail(email) {
   return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
 }
 
+function trackEvent(eventName, payload = {}) {
+  const data = {
+    event: eventName,
+    timestamp: new Date().toISOString(),
+    ...payload,
+  };
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(data);
+}
+
 async function submitForm(data) {
   return await fetch(FORMSUBMIT_URL, {
     method: 'POST',
@@ -46,6 +57,9 @@ function initModals() {
   function openModal(id) {
     const overlay = document.getElementById(id);
     if (!overlay) return;
+    if (id === 'bedriftModal') {
+      trackEvent('modal_open_bedrift');
+    }
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -59,8 +73,18 @@ function initModals() {
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-modal]');
     if (!btn) return;
+    const modalId = btn.dataset.modal;
+
+    if (btn.id === 'heroPrimaryBtn') {
+      trackEvent('cta_click_hero', { location: 'hero', target: modalId });
+    }
+
+    if (modalId === 'courierModal' || modalId === 'driverModal') {
+      trackEvent('cta_click_job', { target: modalId });
+    }
+
     e.preventDefault();
-    openModal(btn.dataset.modal);
+    openModal(modalId);
   });
 
   overlays.forEach((overlay) => {
@@ -109,7 +133,40 @@ function initModalForms() {
           ? 'veikraft — Registrer transportforetak'
           : 'veikraft — Registrer sjåfør';
 
-    if (data.email && !validateEmail(data.email)) {
+    if (formType === 'bedrift') {
+      const companyName = String(data.company_name || '').trim();
+      const location = String(data.location || '').trim();
+      const contactValue = String(data.contact_value || '').trim();
+
+      if (!companyName) {
+        showMessage(msgEl, 'Bedriftsnavn er påkrevd.', false);
+        return;
+      }
+
+      if (!location) {
+        showMessage(msgEl, 'By / område er påkrevd.', false);
+        return;
+      }
+
+      if (!contactValue) {
+        showMessage(msgEl, 'Fyll ut minst e-post eller telefon.', false);
+        return;
+      }
+
+      if (contactValue.includes('@')) {
+        if (!validateEmail(contactValue)) {
+          showMessage(msgEl, 'Ugyldig e-postadresse.', false);
+          return;
+        }
+        data.email = contactValue;
+        data.phone = '';
+      } else {
+        data.phone = contactValue;
+        data.email = '';
+      }
+
+      delete data.contact_value;
+    } else if (data.email && !validateEmail(String(data.email))) {
       showMessage(msgEl, 'Ugyldig e-postadresse.', false);
       return;
     }
@@ -117,6 +174,10 @@ function initModalForms() {
     submitBtn.disabled = true;
     submitBtn.classList.add('loading');
     showMessage(msgEl, '', true);
+
+    if (formType === 'bedrift') {
+      trackEvent('form_submit_bedrift_step1');
+    }
 
     try {
       const res = await submitForm(data);
