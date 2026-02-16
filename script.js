@@ -139,17 +139,17 @@ function initModalForms() {
       const contactValue = String(data.contact_value || '').trim();
 
       if (!companyName) {
-        showMessage(msgEl, 'Bedriftsnavn er påkrevd.', false);
+        showMessage(msgEl, 'Fyll inn bedriftsnavn.', false);
         return;
       }
 
       if (!location) {
-        showMessage(msgEl, 'By / område er påkrevd.', false);
+        showMessage(msgEl, 'Fyll inn by/område.', false);
         return;
       }
 
       if (!contactValue) {
-        showMessage(msgEl, 'Fyll ut minst e-post eller telefon.', false);
+        showMessage(msgEl, 'Fyll inn e-post eller telefon.', false);
         return;
       }
 
@@ -186,7 +186,7 @@ function initModalForms() {
       if (ok) {
         const successMsg =
           formType === 'bedrift'
-            ? 'Takk! Vi tar kontakt innen 2 timer i arbeidstid.'
+            ? 'Takk. Vi kontakter deg innen 2 timer i arbeidstid.'
             : 'Takk! Vi tar kontakt snart.';
         showMessage(msgEl, successMsg, true);
         form.reset();
