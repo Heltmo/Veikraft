@@ -1,7 +1,7 @@
 // ===== FormSubmit (email delivery) =====
 const FORM_EMAIL = 'kundeservice@veikraft.com';
 const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${encodeURIComponent(FORM_EMAIL)}`;
-const FORM_IDS = ['bedriftForm', 'courierForm', 'driverForm'];
+const FORM_IDS = ['bedriftForm'];
 
 // ===== Helpers =====
 function showMessage(el, msg, success = true) {
@@ -110,10 +110,10 @@ function initModals() {
 // ===== Modal form handling =====
 function initModalForms() {
   document.addEventListener('submit', async (e) => {
-    e.preventDefault();
     const form = e.target;
     if (!(form instanceof HTMLFormElement)) return;
     if (!FORM_IDS.includes(form.id)) return;
+    e.preventDefault();
 
     const msgEl = form.querySelector('.form-message');
     const submitBtn = form.querySelector('button[type="submit"]');

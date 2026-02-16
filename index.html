@@ -380,7 +380,11 @@
       <span class="modal-badge">Transportforetak</span>
       <h2>For transportforetak som vil ha oppdrag</h2>
       <p class="modal-desc">Registrer kapasitet og område. Vi kobler dere til distribusjon, siste mil og ruteproduksjon.</p>
-      <form id="courierForm" class="modal-form" data-form-type="courier" data-sheet="TransportCompanies">
+      <form id="courierForm" class="modal-form" action="https://formsubmit.co/kundeservice@veikraft.com" method="POST" data-form-type="courier" data-sheet="TransportCompanies">
+        <input type="hidden" name="formType" value="transportforetak">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="veikraft – Ny innsending">
+        <input type="hidden" name="_template" value="table">
         <div class="form-row">
           <div class="form-group"><input name="company" type="text" placeholder=" " required><label>Firmanavn</label></div>
           <div class="form-group"><input name="contact" type="text" placeholder=" " required><label>Kontaktperson</label></div>
@@ -394,7 +398,7 @@
           <div class="form-group"><input name="capacity" type="text" placeholder=" " required><label>Kjøretøy / kapasitet</label></div>
         </div>
         <div class="form-group"><textarea name="notes" rows="3" placeholder=" "></textarea><label>Annet (valgfri)</label></div>
-        <button type="submit" class="btn btn-outline btn-full btn-lg"><span class="btn-text">Registrer foretak</span></button>
+        <button type="submit">Send</button>
         <div class="form-message" role="status" aria-live="polite"></div>
       </form>
     </div>
@@ -407,7 +411,11 @@
       <span class="modal-badge">Sjåfør</span>
       <h2>For sjåfører som søker oppdrag</h2>
       <p class="modal-desc">Oppgi tilgjengelighet og område. Vi vurderer deg for oppdrag hos samarbeidspartnere.</p>
-      <form id="driverForm" class="modal-form" data-form-type="driver" data-sheet="Drivers">
+      <form id="driverForm" class="modal-form" action="https://formsubmit.co/kundeservice@veikraft.com" method="POST" data-form-type="driver" data-sheet="Drivers">
+        <input type="hidden" name="formType" value="sjafor">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="veikraft – Ny innsending">
+        <input type="hidden" name="_template" value="table">
         <div class="form-row">
           <div class="form-group"><input name="name" type="text" placeholder=" " required><label>Fullt navn</label></div>
           <div class="form-group"><input name="phone" type="tel" placeholder=" " required><label>Telefon</label></div>
@@ -429,7 +437,7 @@
           </div>
         </div>
         <div class="form-group"><textarea name="notes" rows="3" placeholder=" "></textarea><label>Annet (valgfri)</label></div>
-        <button type="submit" class="btn btn-outline btn-full btn-lg"><span class="btn-text">Registrer sjåfør</span></button>
+        <button type="submit">Send</button>
         <div class="form-message" role="status" aria-live="polite"></div>
       </form>
     </div>
