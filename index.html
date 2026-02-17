@@ -53,6 +53,9 @@
       ]
     }
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -81,13 +84,12 @@
     <section class="hero" id="hero">
       <div class="hero-bg"></div>
       <div class="container hero-center fade-up">
-        <h1 id="heroTitle">Kjøretøy med sjåfør for bedrifter i Oslo, Viken og Vestfold</h1>
-        <p class="hero-sub" id="heroSub">Bruk oss til faste ruter, ekstrakapasitet ved topper og backup ved fravær.</p>
-        <p class="hero-precision">Kjøretøy med sjåfør. Fast kontaktpunkt. Løpende oppfølging.</p>
+        <h1 id="heroTitle">Budbil med sjåfør - når du trenger kapasitet.</h1>
+        <p class="hero-sub" id="heroSub">Fast kontaktpunkt, løpende oppfølging og oppstart innen 48 timer — i Oslo, Viken og Vestfold.</p>
         <div class="hero-actions">
           <button class="btn btn-primary" id="heroPrimaryBtn" data-modal="bedriftModal">Få kapasitetstilbud</button>
         </div>
-        <p class="micro-copy hero-reassurance">Uforpliktende. Svar innen 2 timer i arbeidstid.</p>
+        <p class="micro-copy hero-reassurance">Svar innen 2 timer i arbeidstid • Uforpliktende</p>
       </div>
     </section>
 
@@ -115,7 +117,7 @@
         <div class="section-header">
           <span class="section-tag">Slik Fungerer Det</span>
           <h2>Fra behov til oppstart i tre steg</h2>
-          <p class="section-desc">Tre steg fra behov til levering.</p>
+          <p class="section-desc">Du melder inn behov — vi setter opp kapasitet og starter levering.</p>
         </div>
         <div class="steps">
           <div class="step-card">
@@ -382,11 +384,7 @@
       <span class="modal-badge">Transportforetak</span>
       <h2>For transportforetak som vil ha oppdrag</h2>
       <p class="modal-desc">Registrer kapasitet og område. Vi kobler dere til distribusjon, siste mil og ruteproduksjon.</p>
-      <form id="courierForm" class="modal-form" action="https://formsubmit.co/kundeservice@veikraft.com" method="POST" data-form-type="courier" data-sheet="TransportCompanies">
-        <input type="hidden" name="formType" value="transportforetak">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="veikraft – Ny innsending">
-        <input type="hidden" name="_template" value="table">
+      <form id="courierForm" class="modal-form" data-form-type="courier" data-sheet="TransportCompanies">
         <div class="form-row">
           <div class="form-group"><input name="company" type="text" placeholder=" " required><label>Firmanavn</label></div>
           <div class="form-group"><input name="contact" type="text" placeholder=" " required><label>Kontaktperson</label></div>
@@ -400,7 +398,7 @@
           <div class="form-group"><input name="capacity" type="text" placeholder=" " required><label>Kjøretøy / kapasitet</label></div>
         </div>
         <div class="form-group"><textarea name="notes" rows="3" placeholder=" "></textarea><label>Annet (valgfri)</label></div>
-        <button type="submit">Send</button>
+        <button type="submit" class="btn btn-primary btn-full btn-lg"><span class="btn-text">Send</span></button>
         <div class="form-message" role="status" aria-live="polite"></div>
       </form>
     </div>
@@ -413,11 +411,7 @@
       <span class="modal-badge">Sjåfør</span>
       <h2>For sjåfører som søker oppdrag</h2>
       <p class="modal-desc">Oppgi tilgjengelighet og område. Vi vurderer deg for oppdrag hos samarbeidspartnere.</p>
-      <form id="driverForm" class="modal-form" action="https://formsubmit.co/kundeservice@veikraft.com" method="POST" data-form-type="driver" data-sheet="Drivers">
-        <input type="hidden" name="formType" value="sjafor">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="veikraft – Ny innsending">
-        <input type="hidden" name="_template" value="table">
+      <form id="driverForm" class="modal-form" data-form-type="driver" data-sheet="Drivers">
         <div class="form-row">
           <div class="form-group"><input name="name" type="text" placeholder=" " required><label>Fullt navn</label></div>
           <div class="form-group"><input name="phone" type="tel" placeholder=" " required><label>Telefon</label></div>
@@ -439,7 +433,7 @@
           </div>
         </div>
         <div class="form-group"><textarea name="notes" rows="3" placeholder=" "></textarea><label>Annet (valgfri)</label></div>
-        <button type="submit">Send</button>
+        <button type="submit" class="btn btn-primary btn-full btn-lg"><span class="btn-text">Send</span></button>
         <div class="form-message" role="status" aria-live="polite"></div>
       </form>
     </div>
@@ -482,6 +476,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20260215"></script>
+  <script src="script.js?v=20260217"></script>
 </body>
 </html>

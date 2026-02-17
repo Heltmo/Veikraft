@@ -1,7 +1,7 @@
 // ===== FormSubmit (email delivery) =====
 const FORM_EMAIL = 'kundeservice@veikraft.com';
 const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${encodeURIComponent(FORM_EMAIL)}`;
-const FORM_IDS = ['bedriftForm'];
+const FORM_IDS = ['bedriftForm', 'courierForm', 'driverForm'];
 
 // ===== Helpers =====
 function showMessage(el, msg, success = true) {
