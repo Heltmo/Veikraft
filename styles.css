@@ -1251,6 +1251,10 @@ button {
   font-size: 14px;
 }
 
+.footer-meta {
+  margin-top: 2px;
+}
+
 .footer-col h4 {
   color: #f2ebe1;
   font-size: 12px;
